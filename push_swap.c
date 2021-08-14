@@ -120,8 +120,17 @@ void	pb(t_stack *a, t_stack *b)
 
 
 
+t_stack	*stack_setup(void)
+{
+	t_stack	*b;
 
-
+	b = malloc(sizeof(t_stack));
+	b->head = 1;
+	b->next = NULL;
+	b->prev = NULL;
+	b->num = 0;
+	return (b);
+}
 
 
 t_stack	*make_list(int argc, char **argv)
@@ -152,6 +161,7 @@ t_stack	*make_list(int argc, char **argv)
 	return (head);
 }
 
+
 void	print_node(t_stack *node, int node_num, int argc)
 {
 	int node_index;
@@ -177,6 +187,10 @@ void	ps_error_check(int argc, char **argv)
 	int	num_tmp;
 	int	arg_i;
 
+	if (argc < 2)
+	{
+		exit(1);
+	}
 	num_tmp = 0;
 	arg_i = 0;
 	while (arg_i < argc)
@@ -191,12 +205,8 @@ int	main(int argc, char **argv)
 	t_stack *a_stack;
 	t_stack *b_stack;
 
-	if (argc < 2)
-	{
-		write(1, "\n", 1);
-		return (1);
-	}
 	ps_error_check(argc, argv);
+	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
 	print_node(a_stack, 1, argc);
 	sa(a_stack, b_stack);
