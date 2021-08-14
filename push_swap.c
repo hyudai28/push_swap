@@ -14,6 +14,46 @@ typedef struct s_stack
 	int				num;
 }			t_stack;
 
+
+void	sa(t_stack *a, t_stack *b)
+{
+	t_stack	*a_fst2sec;
+	t_stack *a_sec2fst;
+
+	a_fst2sec = a;
+	a_fst2sec = a_fst2sec->next;
+	a_sec2fst = a_fst2sec->next;
+	a->next = a_sec2fst;
+	a_fst2sec->prev = a_sec2fst;
+	a_fst2sec->next = a_sec2fst->next;
+	a_sec2fst->prev = a;
+	a_sec2fst->next = a_fst2sec;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 t_stack	*make_list(int argc, char **argv)
 {
 	t_stack	*head;
@@ -78,9 +118,12 @@ void	ps_error_check(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_stack *node;
+	t_stack *a_stack;
+	t_stack *b_stack;
 
 	ps_error_check(argc, argv);
-	node = make_list(argc, argv);
-	print_node(node, 1, argc);
+	a_stack = make_list(argc, argv);
+	print_node(a_stack, 1, argc);
+	sa(a_stack, b_stack);
+	print_node(a_stack, 1, argc);
 }
