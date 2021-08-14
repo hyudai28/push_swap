@@ -28,22 +28,92 @@ void	sa(t_stack *a, t_stack *b)
 	a_fst2sec->next = a_sec2fst->next;
 	a_sec2fst->prev = a;
 	a_sec2fst->next = a_fst2sec;
-
+	write(1, "sa\n", 2);
 }
 
 
+void	sb(t_stack *a, t_stack *b)
+{
+	t_stack	*b_fst2sec;
+	t_stack *b_sec2fst;
+
+	b_fst2sec = b;
+	b_fst2sec = b_fst2sec->next;
+	b_sec2fst = b_fst2sec->next;
+	b->next = b_sec2fst;
+	b_fst2sec->prev = b_sec2fst;
+	b_fst2sec->next = b_sec2fst->next;
+	b_sec2fst->prev = b;
+	b_sec2fst->next = b_fst2sec;
+	write(1, "sb\n", 2);
+}
+
+void	ss(t_stack *a, t_stack *b)
+{
+	t_stack	*a_fst2sec;
+	t_stack *a_sec2fst;
+	t_stack	*b_fst2sec;
+	t_stack *b_sec2fst;
+
+	a_fst2sec = a;
+	a_fst2sec = a_fst2sec->next;
+	a_sec2fst = a_fst2sec->next;
+	a->next = a_sec2fst;
+	a_fst2sec->prev = a_sec2fst;
+	a_fst2sec->next = a_sec2fst->next;
+	a_sec2fst->prev = a;
+	a_sec2fst->next = a_fst2sec;
+	b_fst2sec = b;
+	b_fst2sec = b_fst2sec->next;
+	b_sec2fst = b_fst2sec->next;
+	b->next = b_sec2fst;
+	b_fst2sec->prev = b_sec2fst;
+	b_fst2sec->next = b_sec2fst->next;
+	b_sec2fst->prev = b;
+	b_sec2fst->next = b_fst2sec;
+	write(1, "ss\n", 3);
+}
+
+void	ra(t_stack *a, t_stack *b)
+{
+	
+}
+
+void	rb(t_stack *a, t_stack *b)
+{
+	
+}
+
+void	rr(t_stack *a, t_stack *b)
+{
+	
+}
 
 
+void	rra(t_stack *a, t_stack *b)
+{
+	
+}
 
+void	rrb(t_stack *a, t_stack *b)
+{
+	
+}
 
+void	rrr(t_stack *a, t_stack *b)
+{
+	
+}
 
+void	pa(t_stack *a, t_stack *b)
+{
+	
+}
 
-
-
-
-
-
-
+void	pb(t_stack *a, t_stack *b)
+{
+	
+}
 
 
 
@@ -121,6 +191,11 @@ int	main(int argc, char **argv)
 	t_stack *a_stack;
 	t_stack *b_stack;
 
+	if (argc < 2)
+	{
+		write(1, "\n", 1);
+		return (1);
+	}
 	ps_error_check(argc, argv);
 	a_stack = make_list(argc, argv);
 	print_node(a_stack, 1, argc);
