@@ -1,0 +1,32 @@
+argv[0] = [./a.out]
+argv[1] = [1]
+argv[2] = [2]
+argv[3] = [3]
+argv[4] = [4]
+argv[5] = [5]
+error fin
+head = [0]
+____now->num = 1________
+head = [0]
+____now->num = 2________
+head = [0]
+____now->num = 3________
+head = [0]
+____now->num = 4________
+head = [0]
+____now->num = 5________
+head = [0]
+now = [5]
+prev = [4]
+make fin
+node->head = 0
+[a]node[1] = [1]
+node->head = 0
+[a]node[2] = [2]
+node->head = 0
+[a]node[3] = [3]
+node->head = 0
+[a]node[4] = [4]
+node->head = 0
+[a]node[5] = [5]
+print fin
