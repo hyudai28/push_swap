@@ -28,7 +28,7 @@ void	sa(t_stack *a, t_stack *b)
 	a_fst2sec->next = a_sec2fst->next;
 	a_sec2fst->prev = a;
 	a_sec2fst->next = a_fst2sec;
-	write(1, "sa\n", 2);
+	write(1, "sa\n", 3);
 }
 
 
@@ -45,7 +45,7 @@ void	sb(t_stack *a, t_stack *b)
 	b_fst2sec->next = b_sec2fst->next;
 	b_sec2fst->prev = b;
 	b_sec2fst->next = b_fst2sec;
-	write(1, "sb\n", 2);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -74,45 +74,114 @@ void	ss(t_stack *a, t_stack *b)
 	write(1, "ss\n", 3);
 }
 
-void	ra(t_stack *a, t_stack *b)
+void	ra(t_stack *a, t_stack *b, int print)
 {
-	
+	t_stack	*fst2last;
+	t_stack	*lst2sec;
+
+	fst2last = a->next;
+	lst2sec = a->prev;
+	a->next->next->prev = a;
+	a->next = a->next->next;
+	fst2last->next = a;
+	fst2last->prev = a->prev;
+	lst2sec->next = fst2last;
+	a->prev = fst2last;
+	if (print)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *a, t_stack *b)
+void	rb(t_stack *a, t_stack *b, int print)
 {
-	
+	t_stack	*fst2last;
+	t_stack	*lst2sec;
+
+	fst2last = b->next;
+	lst2sec = b->prev;
+	b->next->next->prev = b;
+	b->next = b->next->next;
+	fst2last->next = b;
+	fst2last->prev = b->prev;
+	lst2sec->next = fst2last;
+	b->prev = fst2last;
+	if (print)
+		write(1, "rb\n", 3);
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
-	
+	ra(a, b, 0);
+	rb(a, b, 0);
+	write(1, "rr\n", 3);
 }
 
 
-void	rra(t_stack *a, t_stack *b)
+void	rra(t_stack *a, t_stack *b, int print)
 {
-	
+	t_stack	*lst2fst;
+	t_stack	*fst2sec;
+
+	lst2fst = a->prev;
+	fst2sec = a->next;
+	lst2fst->prev->next = a;
+	lst2fst->next = a->next;
+	a->next = lst2fst;
+	a->prev = lst2fst->prev;
+	lst2fst->prev = a;
+	fst2sec->prev = lst2fst;
+	if (print)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack *a, t_stack *b)
+void	rrb(t_stack *a, t_stack *b, int print)
 {
-	
+	t_stack	*lst2fst;
+	t_stack	*fst2sec;
+
+	lst2fst = b->prev;
+	fst2sec = b->next;
+	lst2fst->prev->next = b;
+	b->next = lst2fst;
+	b->prev = lst2fst->prev;
+	lst2fst->prev = b;
+	fst2sec->prev = lst2fst;
+	if (print)
+		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
-	
+	rra(a, b, 0);
+	rrb(a, b, 0);
+	write(1, "rrr\n", 4);
 }
 
 void	pa(t_stack *a, t_stack *b)
 {
-	
+	t_stack	*bfst2afst;
+
+	bfst2afst = b->next;
+	b->next->prev = b;
+	b->next = bfst2afst->next;
+	a->next->prev = bfst2afst;
+	bfst2afst->next = a->next;
+	bfst2afst->prev = a;
+	a->next = bfst2afst;
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
-	
+	t_stack	*afst2bfst;
+
+	afst2bfst = a->next;
+	a->next->prev = a;
+	a->next = afst2bfst->next;
+	b->next->prev = afst2bfst;
+	afst2bfst->next = b->next;
+	afst2bfst->prev = b;
+	b->next = afst2bfst;
+	write(1, "pb\n", 3);
 }
 
 
@@ -157,7 +226,8 @@ t_stack	*make_list(int argc, char **argv)
 		now->next = new;
 		now = now->next;
 	}
-	now = head;
+	printf("now->num[%d]\n", now->num);
+	head->prev = now;
 	return (head);
 }
 
@@ -167,6 +237,7 @@ void	print_node(t_stack *node, int node_num, int argc)
 	int node_index;
 	char stack_type;
 
+	puts("=========print start=========\n");
 	if (node_num)
 		stack_type = 'a';
 	else
@@ -179,7 +250,7 @@ void	print_node(t_stack *node, int node_num, int argc)
 		node_index++;
 		node = node->next;
 	}
-	puts("print fin");
+	puts("\n=========print fin=========");
 }
 
 void	ps_error_check(int argc, char **argv)
@@ -211,4 +282,11 @@ int	main(int argc, char **argv)
 	print_node(a_stack, 1, argc);
 	sa(a_stack, b_stack);
 	print_node(a_stack, 1, argc);
+	ra(a_stack, b_stack, 1);
+	print_node(a_stack, 1, argc);
+	rra(a_stack, b_stack, 1);
+	print_node(a_stack, 1, argc);
+
+
+	system("leaks a.out");
 }
