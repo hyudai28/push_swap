@@ -120,15 +120,19 @@ void	rra(t_stack *a, t_stack *b, int print)
 {
 	t_stack	*lst2fst;
 	t_stack	*fst2sec;
+	t_stack	*middle;
 
 	lst2fst = a->prev;
 	fst2sec = a->next;
-	lst2fst->prev->next = a;
-	lst2fst->next = a->next;
-	a->next = lst2fst;
-	a->prev = lst2fst->prev;
+	middle = a->next->next;
+	lst2fst->next = fst2sec;
 	lst2fst->prev = a;
+	middle->next = a;
+	middle->prev = fst2sec;
+	fst2sec->next = middle;
 	fst2sec->prev = lst2fst;
+	a->next = lst2fst;
+	a->prev = middle;
 	if (print)
 		write(1, "rra\n", 4);
 }
@@ -137,16 +141,21 @@ void	rrb(t_stack *a, t_stack *b, int print)
 {
 	t_stack	*lst2fst;
 	t_stack	*fst2sec;
+	t_stack	*middle;
 
 	lst2fst = b->prev;
 	fst2sec = b->next;
-	lst2fst->prev->next = b;
-	b->next = lst2fst;
-	b->prev = lst2fst->prev;
+	middle = b->next->next;
+	lst2fst->next = fst2sec;
 	lst2fst->prev = b;
+	middle->next = b;
+	middle->prev = fst2sec;
+	fst2sec->next = middle;
 	fst2sec->prev = lst2fst;
+	b->next = lst2fst;
+	b->prev = middle;
 	if (print)
-		write(1, "rrb\n", 4);
+		write(1, "rrb\n", 4);;
 }
 
 void	rrr(t_stack *a, t_stack *b)
@@ -226,7 +235,6 @@ t_stack	*make_list(int argc, char **argv)
 		now->next = new;
 		now = now->next;
 	}
-	printf("now->num[%d]\n", now->num);
 	head->prev = now;
 	return (head);
 }
@@ -271,6 +279,63 @@ void	ps_error_check(int argc, char **argv)
 	}
 }
 
+void	swap3_case1(t_stack *a, t_stack *b)
+{
+	sa(a, b);
+}
+
+void	swap3_case2(t_stack *a, t_stack *b)
+{
+	sa(a, b);
+	rra(a, b, 1);
+}
+
+void	swap3_case3(t_stack *a, t_stack *b)
+{
+	ra(a, b, 1);
+}
+
+void	swap3_case4(t_stack *a, t_stack *b)
+{
+	sa(a, b);
+	ra(a, b, 1);
+}
+
+void	swap3_case5(t_stack *a, t_stack *b)
+{
+	rra(a, b, 1);
+}
+
+void	do_swap_3(t_stack *a, t_stack *b)
+{
+	int	num1;
+	int	num2;
+	int	num3;
+
+	num1 = a->next->num;
+	num2 = a->next->next->num;
+	num3 = a->prev->num;
+	if (num1 > num2)
+	{
+		if (num2 < num3)
+		{
+			if (num1 < num3)
+				swap3_case1(a, b);
+			else if (num1 > num3)
+				swap3_case3(a, b);
+		}
+		else if (num2 > num3)
+			swap3_case2(a, b);
+	}
+	else if (num2 > num3)
+	{
+		if (num1 < num3)
+			swap3_case4(a, b);
+		else if (num1 > num3)
+			swap3_case5(a, b);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
@@ -279,14 +344,10 @@ int	main(int argc, char **argv)
 	ps_error_check(argc, argv);
 	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
+	do_swap_3(a_stack, b_stack);
 	print_node(a_stack, 1, argc);
-	sa(a_stack, b_stack);
-	print_node(a_stack, 1, argc);
-	ra(a_stack, b_stack, 1);
-	print_node(a_stack, 1, argc);
-	rra(a_stack, b_stack, 1);
-	print_node(a_stack, 1, argc);
+	// rra(a_stack, b_stack, 1);
+	// print_node(a_stack, 1, argc);
 
-
-	system("leaks a.out");
+	// system("leaks a.out");
 }
