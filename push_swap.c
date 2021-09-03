@@ -20,9 +20,8 @@ void	sa(t_stack *a, t_stack *b)
 	t_stack	*a_fst2sec;
 	t_stack *a_sec2fst;
 
-	a_fst2sec = a;
-	a_fst2sec = a_fst2sec->next;
-	a_sec2fst = a_fst2sec->next;
+	a_fst2sec = a->next;
+	a_sec2fst = a->next->next;
 	a->next = a_sec2fst;
 	a_fst2sec->prev = a_sec2fst;
 	a_fst2sec->next = a_sec2fst->next;
@@ -37,9 +36,8 @@ void	sb(t_stack *a, t_stack *b)
 	t_stack	*b_fst2sec;
 	t_stack *b_sec2fst;
 
-	b_fst2sec = b;
-	b_fst2sec = b_fst2sec->next;
-	b_sec2fst = b_fst2sec->next;
+	b_fst2sec = b->next;
+	b_sec2fst = b->next->next;
 	b->next = b_sec2fst;
 	b_fst2sec->prev = b_sec2fst;
 	b_fst2sec->next = b_sec2fst->next;
@@ -169,11 +167,22 @@ void	pa(t_stack *a, t_stack *b)
 {
 	t_stack	*bfst2afst;
 
+	if (!b->next)
+	{
+		write(1, "error\n", 6);
+		return ;
+	}
 	bfst2afst = b->next;
-	b->next->prev = b;
-	b->next = bfst2afst->next;
-	a->next->prev = bfst2afst;
-	bfst2afst->next = a->next;
+	b->next->next->prev = b;
+	b->next = b->next->next;
+	if (a->next)
+		a->next->prev = bfst2afst;
+	else
+		b->prev = bfst2afst;
+	if (a->next)
+		bfst2afst->next = a->next;
+	else
+		bfst2afst->next = a;
 	bfst2afst->prev = a;
 	a->next = bfst2afst;
 	write(1, "pa\n", 3);
@@ -183,11 +192,22 @@ void	pb(t_stack *a, t_stack *b)
 {
 	t_stack	*afst2bfst;
 
+	if (!a->next)
+	{
+		write(1, "error\n", 6);
+		return ;
+	}
 	afst2bfst = a->next;
-	a->next->prev = a;
-	a->next = afst2bfst->next;
-	b->next->prev = afst2bfst;
-	afst2bfst->next = b->next;
+	a->next->next->prev = a;
+	a->next = a->next->next;
+	if (b->next)
+		b->next->prev = afst2bfst;
+	else
+		b->prev = afst2bfst;
+	if (b->next)
+		afst2bfst->next = b->next;
+	else
+		afst2bfst->next = b;
 	afst2bfst->prev = b;
 	b->next = afst2bfst;
 	write(1, "pb\n", 3);
@@ -279,34 +299,39 @@ void	ps_error_check(int argc, char **argv)
 	}
 }
 
-void	swap3_case1(t_stack *a, t_stack *b)
+int	swap3_case1(t_stack *a, t_stack *b)
 {
 	sa(a, b);
+	return (1);
 }
 
-void	swap3_case2(t_stack *a, t_stack *b)
+int	swap3_case2(t_stack *a, t_stack *b)
 {
 	sa(a, b);
 	rra(a, b, 1);
+	return (2);
 }
 
-void	swap3_case3(t_stack *a, t_stack *b)
+int	swap3_case3(t_stack *a, t_stack *b)
 {
 	ra(a, b, 1);
+	return (1);
 }
 
-void	swap3_case4(t_stack *a, t_stack *b)
+int	swap3_case4(t_stack *a, t_stack *b)
 {
 	sa(a, b);
 	ra(a, b, 1);
+	return (2);
 }
 
-void	swap3_case5(t_stack *a, t_stack *b)
+int	swap3_case5(t_stack *a, t_stack *b)
 {
 	rra(a, b, 1);
+	return (1);
 }
 
-void	do_swap_3(t_stack *a, t_stack *b)
+int	do_swap_3(t_stack *a, t_stack *b, int order)
 {
 	int	num1;
 	int	num2;
@@ -314,40 +339,136 @@ void	do_swap_3(t_stack *a, t_stack *b)
 
 	num1 = a->next->num;
 	num2 = a->next->next->num;
-	num3 = a->prev->num;
+	num3 = a->next->next->next->num;
 	if (num1 > num2)
 	{
 		if (num2 < num3)
 		{
 			if (num1 < num3)
-				swap3_case1(a, b);
+				order +=  swap3_case1(a, b);
 			else if (num1 > num3)
-				swap3_case3(a, b);
+				order += swap3_case3(a, b);
 		}
 		else if (num2 > num3)
-			swap3_case2(a, b);
+			order += swap3_case2(a, b);
 	}
 	else if (num2 > num3)
 	{
 		if (num1 < num3)
-			swap3_case4(a, b);
+			order += swap3_case4(a, b);
 		else if (num1 > num3)
-			swap3_case5(a, b);
+			order += swap3_case5(a, b);
 	}
+	return (order);
+}
+
+int	serch_min_num(t_stack *target)
+{
+	t_stack	*serch;
+	int		min_num;
+	int		num_index;
+	int		num_index_ret;
+
+	serch = target->next;
+	min_num = serch->num;
+	num_index = 1;
+	num_index_ret = 1;
+	while (!serch->head)
+	{
+		if (min_num > serch->num)
+		{
+			min_num = serch->num;
+			num_index_ret = num_index;
+		}
+		serch = serch->next;
+		num_index++;
+	}
+	return (num_index_ret);
+}
+
+int		target_ra_b(t_stack *a, t_stack *b, int target_index, int ra_or_rra)
+{
+	int	node_index;
+	int order;
+
+	node_index = 1;
+	order = 0;
+	while (node_index < target_index)
+	{
+		if (ra_or_rra)
+			ra(a, b, 1);
+		else
+			rra(a, b, 1);
+		order++;
+		node_index++;
+	}
+	pb(a, b);
+	return (order + 1);
+}
+
+
+int	num_pb(t_stack *a, t_stack *b, int target_index, int argc)
+{
+	int	node_index;
+	int	order;
+	t_stack *a_head;
+
+	a_head = a;
+	a = a->next;
+	node_index = 1;
+	order = 0;
+	if (target_index <= argc / 2 + 1)
+		order += target_ra_b(a_head, b, target_index, 1);
+	else
+		order += target_ra_b(a_head, b, target_index, 0);
+	a = a->next;
+	return (order);
+}
+
+int	min_num_pb(t_stack *a, t_stack *b, int argc)
+{
+	return (num_pb(a, b, serch_min_num(a), argc));
+}
+
+int	do_swap_5(t_stack *a, t_stack *b, int order, int argc)
+{
+	int		node_index;
+	printf("===============%s=============\n", __func__);
+	t_stack	*a_nextnext;
+	
+	node_index = 4;
+	while (node_index < argc)
+	{
+		order += min_num_pb(a, b, argc);
+		node_index++;
+	}
+	order += do_swap_3(a, b, 0);
+	//print_node(a, 1, argc);
+	//print_node(b, 0, argc);
+	pa(a, b); 
+	pa(a, b);
+	printf("===============%s fin=============\n", __func__);
+	return (order + 2);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
 	t_stack *b_stack;
+	int		order;
 
+printf("argc = [%d]\n", argc);
 	ps_error_check(argc, argv);
 	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
-	do_swap_3(a_stack, b_stack);
+	order = 0;
+	if (argc == 4)
+		order = do_swap_3(a_stack, b_stack, order);
+	else if (argc <= 6)
+		order = do_swap_5(a_stack, b_stack, order, argc);
+	else
+		printf("no added\n");
 	print_node(a_stack, 1, argc);
-	// rra(a_stack, b_stack, 1);
-	// print_node(a_stack, 1, argc);
-
-	// system("leaks a.out");
+	print_node(b_stack, 0, argc);
+	printf("order = [%d]\n", order);
 }
