@@ -451,6 +451,15 @@ int	do_swap_5(t_stack *a, t_stack *b, int order, int argc)
 	return (order + 2);
 }
 
+int	do_swap_2(t_stack *a, t_stack *b, int order, int argc)
+{
+	if (argc == 2)
+		return (0);
+	if (a->next->num > a->next->next->num)
+		sa(a, b);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
@@ -462,7 +471,9 @@ printf("argc = [%d]\n", argc);
 	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
 	order = 0;
-	if (argc == 4)
+	if (argc <= 3)
+		order = do_swap_2(a_stack, b_stack, order, argc);
+	else if (argc == 4)
 		order = do_swap_3(a_stack, b_stack, order);
 	else if (argc <= 6)
 		order = do_swap_5(a_stack, b_stack, order, argc);
