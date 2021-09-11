@@ -4,6 +4,18 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define SORTSIZE 4
+
+typedef struct s_order
+{
+	int		r_order;
+	int		p_order;
+	int		node_index;
+	int		r_order_cpy;
+	int		p_order_cpy;
+}				t_order;
+
+
 //atoi!!!!!!!!!!!!!!!
 
 typedef struct s_stack
@@ -15,7 +27,10 @@ typedef struct s_stack
 }			t_stack;
 
 
-void	sa(t_stack *a, t_stack *b)
+void	A_to_B(t_stack *a, t_stack *b, int num_size, int pivot);
+void	B_to_A(t_stack *a, t_stack *b, int num_size, int pivot);
+
+int	sa(t_stack *a, t_stack *b)
 {
 	t_stack	*a_fst2sec;
 	t_stack *a_sec2fst;
@@ -28,10 +43,11 @@ void	sa(t_stack *a, t_stack *b)
 	a_sec2fst->prev = a;
 	a_sec2fst->next = a_fst2sec;
 	write(1, "sa\n", 3);
+	return (1);
 }
 
 
-void	sb(t_stack *a, t_stack *b)
+int	sb(t_stack *a, t_stack *b)
 {
 	t_stack	*b_fst2sec;
 	t_stack *b_sec2fst;
@@ -44,9 +60,10 @@ void	sb(t_stack *a, t_stack *b)
 	b_sec2fst->prev = b;
 	b_sec2fst->next = b_fst2sec;
 	write(1, "sb\n", 3);
+	return (1);
 }
 
-void	ss(t_stack *a, t_stack *b)
+int	ss(t_stack *a, t_stack *b)
 {
 	t_stack	*a_fst2sec;
 	t_stack *a_sec2fst;
@@ -70,9 +87,10 @@ void	ss(t_stack *a, t_stack *b)
 	b_sec2fst->prev = b;
 	b_sec2fst->next = b_fst2sec;
 	write(1, "ss\n", 3);
+	return (1);
 }
 
-void	ra(t_stack *a, t_stack *b, int print)
+int	ra(t_stack *a, t_stack *b, int print)
 {
 	t_stack	*fst2last;
 	t_stack	*lst2sec;
@@ -87,9 +105,10 @@ void	ra(t_stack *a, t_stack *b, int print)
 	a->prev = fst2last;
 	if (print)
 		write(1, "ra\n", 3);
+	return (1);
 }
 
-void	rb(t_stack *a, t_stack *b, int print)
+int	rb(t_stack *a, t_stack *b, int print)
 {
 	t_stack	*fst2last;
 	t_stack	*lst2sec;
@@ -104,17 +123,19 @@ void	rb(t_stack *a, t_stack *b, int print)
 	b->prev = fst2last;
 	if (print)
 		write(1, "rb\n", 3);
+	return (1);
 }
 
-void	rr(t_stack *a, t_stack *b)
+int	rr(t_stack *a, t_stack *b)
 {
 	ra(a, b, 0);
 	rb(a, b, 0);
 	write(1, "rr\n", 3);
+	return (1);
 }
 
 
-void	rra(t_stack *a, t_stack *b, int print)
+int	rra(t_stack *a, t_stack *b, int print)
 {
 	t_stack	*lst2fst;
 	t_stack	*fst2sec;
@@ -133,9 +154,10 @@ void	rra(t_stack *a, t_stack *b, int print)
 	a->prev = middle;
 	if (print)
 		write(1, "rra\n", 4);
+	return (1);
 }
 
-void	rrb(t_stack *a, t_stack *b, int print)
+int	rrb(t_stack *a, t_stack *b, int print)
 {
 	t_stack	*lst2fst;
 	t_stack	*fst2sec;
@@ -153,24 +175,26 @@ void	rrb(t_stack *a, t_stack *b, int print)
 	b->next = lst2fst;
 	b->prev = middle;
 	if (print)
-		write(1, "rrb\n", 4);;
+		write(1, "rrb\n", 4);
+	return (1);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+int	rrr(t_stack *a, t_stack *b)
 {
 	rra(a, b, 0);
 	rrb(a, b, 0);
 	write(1, "rrr\n", 4);
+	return (1);
 }
 
-void	pa(t_stack *a, t_stack *b)
+int	pa(t_stack *a, t_stack *b)
 {
 	t_stack	*bfst2afst;
 
 	if (!b->next)
 	{
 		write(1, "error\n", 6);
-		return ;
+		return (0);
 	}
 	bfst2afst = b->next;
 	b->next->next->prev = b;
@@ -186,16 +210,17 @@ void	pa(t_stack *a, t_stack *b)
 	bfst2afst->prev = a;
 	a->next = bfst2afst;
 	write(1, "pa\n", 3);
+	return (1);
 }
 
-void	pb(t_stack *a, t_stack *b)
+int	pb(t_stack *a, t_stack *b)
 {
 	t_stack	*afst2bfst;
 
 	if (!a->next)
 	{
 		write(1, "error\n", 6);
-		return ;
+		return (0);
 	}
 	afst2bfst = a->next;
 	a->next->next->prev = a;
@@ -211,6 +236,7 @@ void	pb(t_stack *a, t_stack *b)
 	afst2bfst->prev = b;
 	b->next = afst2bfst;
 	write(1, "pb\n", 3);
+	return (1);
 }
 
 
@@ -460,6 +486,200 @@ int	do_swap_2(t_stack *a, t_stack *b, int order, int argc)
 	return (1);
 }
 
+
+
+
+
+
+
+//syamashi
+///*
+
+int	half_set(t_stack *a, t_stack *b, int num_size)
+{
+	int	node_index;
+
+	node_index = 0;
+	while (node_index < num_size / 2)
+	{
+		pb(a, b);
+		node_index++;
+	}
+	return (node_index);
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	stack_size;
+
+	stack_size = 0;
+	stack = stack->next;
+	while (!stack->head)
+	{
+		stack_size++;
+		stack = stack->next;
+	}
+	return (stack_size);
+}
+
+int	b_quick_sort(t_stack *a, t_stack *b, int size)
+{
+	t_stack	*pivot;
+	t_stack	*left;
+	t_stack	*right;
+	int		node_index;
+
+	pivot = b->prev;
+	left = b->next;
+	right = b->prev->prev;
+	node_index = 0;
+	while (node_index < size)
+	{
+
+	}
+	
+
+
+}
+
+int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
+{
+	int		size;
+
+	order += half_set(a, b, num_size);
+	while (1)
+	{
+		//b_settle_top(a, b);
+		while ((size = stack_size(b)) > SORTSIZE)
+			order += b_quick_sort(a, b, size);
+		if (size)
+			order += allsort(a, b, size);
+		while ((size = serch_a_size(a)) && size <= SORTSIZE)
+			order += allsort(a, b, size);
+		if (size)
+			order += a_quick_sort(a, b, size);
+	}
+}
+
+//*/
+
+
+
+/* korean
+
+void	qsort_swap_number(int *ary, int i, int j)
+{
+	int	temp;
+
+	temp = ary[i];
+	ary[i] = ary[j];
+	ary[j] = temp;
+}
+
+void	ft_qsort(int *ary, int left, int right)
+{
+	int	i;
+	int	j;
+	int	pivot;
+
+	i = left;
+	j = right;
+	pivot = ary[(left + right) / 2];
+	while (1)
+	{
+		while (ary[i] < pivot)
+			i++;
+		while (pivot < ary[j])
+			j--;
+		if (i >= j)
+			break;
+		qsort_swap_number(ary, i, j);
+		i++;
+		j--;
+	}
+	if (left < i - 1)
+		ft_qsort(ary, left, i - 1);
+	if (j + 1 < right)
+		ft_qsort(ary, j + 1, right);
+}
+
+int	serch_median(t_stack *stack, int num_size)
+{
+	int	pivot;
+	int	stack_index;
+	int	stack_ary[num_size + 1];
+
+	stack_index = 0;
+	stack = stack->next;
+	while (stack_index < num_size)
+		stack_ary[stack_index++] = stack->num;
+	ft_qsort(stack_ary, 0, num_size - 1);
+	pivot = stack_ary[num_size / 2];
+	return (pivot);
+}
+
+
+void	A_to_B(t_stack *a, t_stack *b, int num_size, int pivot)
+{
+	t_order	order;
+	t_stack	*a_node;
+
+	order = (t_order){};
+	a_node = a->next;
+	pivot = serch_median(a, num_size);
+	while (order.node_index < num_size)
+	{
+		if (a_node->num > pivot)
+			order.r_order += ra(a, b, 1);
+		else
+			order.p_order += pb(a, b);
+		a_node = a_node->next;
+		order.node_index++;
+	}
+	while (order.r_order > 0)
+	{
+		rra(a, b, 1);
+		order.r_order--;
+	}
+	order.r_order_cpy = order.r_order;
+	order.p_order_cpy = order.p_order;
+	A_to_B(a, b, order.r_order_cpy, pivot);
+	B_to_A(a, b, order.p_order_cpy, pivot);
+}
+
+void	B_to_A(t_stack *a, t_stack *b, int num_size, int pivot)
+{
+	t_order	order;
+	t_stack	*b_node;
+
+	order = (t_order){};
+	b_node = b->next;
+	while (order.node_index < num_size)
+	{
+		if (b_node->num > pivot)
+			order.r_order += rb(a, b, 1);
+		else
+			order.p_order += pa(a, b);
+		b_node = b_node->next;
+		order.node_index++;
+	}
+	order.r_order_cpy = order.r_order;
+	order.p_order_cpy = order.p_order;
+	while (order.r_order > 0)
+	{
+		rra(a, b, 1);
+		order.r_order--;
+	}
+	order.r_order_cpy = order.r_order;
+	order.p_order_cpy = order.p_order;
+	A_to_B(a, b, order.r_order_cpy, pivot);
+	B_to_A(a, b, order.p_order_cpy, pivot);
+}
+
+
+*/
+
+
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
@@ -478,7 +698,10 @@ printf("argc = [%d]\n", argc);
 	else if (argc <= 6)
 		order = do_swap_5(a_stack, b_stack, order, argc);
 	else
-		printf("no added\n");
+	{
+		//A_to_B(a_stack, b_stack, argc - 1, 0);
+		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
+	}
 	print_node(a_stack, 1, argc);
 	print_node(b_stack, 0, argc);
 	printf("order = [%d]\n", order);
