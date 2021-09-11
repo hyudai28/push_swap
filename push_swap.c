@@ -486,86 +486,20 @@ int	do_swap_2(t_stack *a, t_stack *b, int order, int argc)
 	return (1);
 }
 
-
-
-
-
-
-
-//syamashi
-///*
-
-int	half_set(t_stack *a, t_stack *b, int num_size)
+int	*node_to_ary(t_stack *a, int size)
 {
+	int	ary[size];
 	int	node_index;
 
 	node_index = 0;
-	while (node_index < num_size / 2)
+	a = a->next;
+	while (!a->head)
 	{
-		pb(a, b);
-		node_index++;
+		ary[node_index++] = a->num;
+		a = a->next;
 	}
-	return (node_index);
+	return (ary);
 }
-
-int	stack_size(t_stack *stack)
-{
-	int	stack_size;
-
-	stack_size = 0;
-	stack = stack->next;
-	while (!stack->head)
-	{
-		stack_size++;
-		stack = stack->next;
-	}
-	return (stack_size);
-}
-
-int	b_quick_sort(t_stack *a, t_stack *b, int size)
-{
-	t_stack	*pivot;
-	t_stack	*left;
-	t_stack	*right;
-	int		node_index;
-
-	pivot = b->prev;
-	left = b->next;
-	right = b->prev->prev;
-	node_index = 0;
-	while (node_index < size)
-	{
-
-	}
-	
-
-
-}
-
-int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
-{
-	int		size;
-
-	order += half_set(a, b, num_size);
-	while (1)
-	{
-		//b_settle_top(a, b);
-		while ((size = stack_size(b)) > SORTSIZE)
-			order += b_quick_sort(a, b, size);
-		if (size)
-			order += allsort(a, b, size);
-		while ((size = serch_a_size(a)) && size <= SORTSIZE)
-			order += allsort(a, b, size);
-		if (size)
-			order += a_quick_sort(a, b, size);
-	}
-}
-
-//*/
-
-
-
-/* korean
 
 void	qsort_swap_number(int *ary, int i, int j)
 {
@@ -575,6 +509,7 @@ void	qsort_swap_number(int *ary, int i, int j)
 	ary[i] = ary[j];
 	ary[j] = temp;
 }
+
 
 void	ft_qsort(int *ary, int left, int right)
 {
@@ -602,6 +537,72 @@ void	ft_qsort(int *ary, int left, int right)
 	if (j + 1 < right)
 		ft_qsort(ary, j + 1, right);
 }
+
+
+
+//syamashi
+/*
+
+int	half_set(t_stack *a, t_stack *b, int num_size)
+{
+	int	node_index;
+
+	node_index = 0;
+	while (node_index < num_size / 2)
+	{
+		pb(a, b);
+		node_index++;
+	}
+	return (node_index);
+}
+
+int	count_stack_size(t_stack *stack)
+{
+	int	count_size;
+
+	count_size = 0;
+	stack = stack->next;
+	while (!stack->head)
+	{
+		count_size++;
+		stack = stack->next;
+	}
+	return (count_size);
+}
+
+int	b_quick_sort(t_stack *a, t_stack *b, int size)
+{
+
+}
+
+int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
+{
+	int		size;
+	int		sort_fin;
+
+	order += half_set(a, b, num_size);
+	size = count_stack_size(b);
+	sort_fin = 0;
+	while (sort_fin != num_size)
+	{
+		//b_settle_top(a, b);
+		while ((size = count_stack_size(b)) > SORTSIZE)
+			order += b_quick_sort(a, b, size);
+		if (size)
+			order += allsort(a, b, size);
+		while ((size = serch_a_size(a)) && size <= SORTSIZE)
+			order += allsort(a, b, size);
+		if (size)
+			order += a_quick_sort(a, b, size);
+	}
+}
+
+*/
+
+
+
+/* korean
+
 
 int	serch_median(t_stack *stack, int num_size)
 {
@@ -690,6 +691,19 @@ printf("argc = [%d]\n", argc);
 	ps_error_check(argc, argv);
 	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
+
+	int ary_index = 0;
+	int *ary = node_to_ary(a_stack, argc - 1);
+	while (ary[ary_index])
+		printf("ary[%d] = [%d]\n", ary_index, ary[ary_index++]);
+	ft_qsort(ary, 0, argc - 1);
+	while (ary[ary_index])
+		printf("ary[%d] = [%d]\n", ary_index, ary[ary_index++]);
+	exit(1);
+
+
+
+
 	order = 0;
 	if (argc <= 3)
 		order = do_swap_2(a_stack, b_stack, order, argc);

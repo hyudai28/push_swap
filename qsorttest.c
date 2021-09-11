@@ -54,19 +54,22 @@ void	show_data(int *ary, int size)
 	}
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	int i = 0;
-	int ary[101];
-	
-	while (i < 101)
+	int ary[argc - 1];
+	int ary_index = 0;
+
+	printf("left = [%d, right = %d]\n", 0, argc - 1);
+	while (ary_index < argc - 1)
 	{
-		ary[i] = i;
-		i++;
+		ary[ary_index] = atoi(argv[ary_index + 1]);
+		ary_index++;
 	}
+	show_data(ary, argc - 1);
 	printf("before qsort\n");
-	ft_qsort(ary, 0, 100);
-	show_data(ary, 100);
+	ft_qsort(ary, 0, argc - 2);
+	show_data(ary, argc - 1);
 }
 
 
