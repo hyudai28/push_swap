@@ -469,8 +469,6 @@ int	do_swap_5(t_stack *a, t_stack *b, int order, int argc)
 		node_index++;
 	}
 	order += do_swap_3(a, b, 0);
-	//print_node(a, 1, argc);
-	//print_node(b, 0, argc);
 	pa(a, b); 
 	pa(a, b);
 	printf("===============%s fin=============\n", __func__);
@@ -486,19 +484,18 @@ int	do_swap_2(t_stack *a, t_stack *b, int order, int argc)
 	return (1);
 }
 
-int	*node_to_ary(t_stack *a, int size)
+void	node_to_ary(t_stack *a, int size, int *ary)
 {
-	int	ary[size];
 	int	node_index;
 
 	node_index = 0;
 	a = a->next;
-	while (!a->head)
+	while (node_index < size)
 	{
-		ary[node_index++] = a->num;
+		ary[node_index] = a->num;
+		node_index++;
 		a = a->next;
 	}
-	return (ary);
 }
 
 void	qsort_swap_number(int *ary, int i, int j)
@@ -519,7 +516,9 @@ void	ft_qsort(int *ary, int left, int right)
 
 	i = left;
 	j = right;
+
 	pivot = ary[(left + right) / 2];
+
 	while (1)
 	{
 		while (ary[i] < pivot)
@@ -681,6 +680,17 @@ void	B_to_A(t_stack *a, t_stack *b, int num_size, int pivot)
 */
 
 
+void	show_data(int *ary, int size)
+{
+	int	i = 0;
+
+	while (i < size)
+	{
+		printf("ary[%d] = [%d]\n", i, ary[i]);
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
@@ -693,12 +703,12 @@ printf("argc = [%d]\n", argc);
 	a_stack = make_list(argc, argv);
 
 	int ary_index = 0;
-	int *ary = node_to_ary(a_stack, argc - 1);
-	while (ary[ary_index])
-		printf("ary[%d] = [%d]\n", ary_index, ary[ary_index++]);
-	ft_qsort(ary, 0, argc - 1);
-	while (ary[ary_index])
-		printf("ary[%d] = [%d]\n", ary_index, ary[ary_index++]);
+	int ary[argc - 1];
+	node_to_ary(a_stack, argc - 1, ary);
+	show_data(ary, argc - 1);
+	ft_qsort(ary, 0, argc - 2);
+	printf("==========\n");
+	show_data(ary, argc - 1);
 	exit(1);
 
 
