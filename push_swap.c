@@ -30,7 +30,7 @@ typedef struct s_stack
 void	A_to_B(t_stack *a, t_stack *b, int num_size, int pivot);
 void	B_to_A(t_stack *a, t_stack *b, int num_size, int pivot);
 
-int	sa(t_stack *a, t_stack *b)
+int	sa(t_stack *a)
 {
 	t_stack	*a_fst2sec;
 	t_stack *a_sec2fst;
@@ -47,7 +47,7 @@ int	sa(t_stack *a, t_stack *b)
 }
 
 
-int	sb(t_stack *a, t_stack *b)
+int	sb(t_stack *b)
 {
 	t_stack	*b_fst2sec;
 	t_stack *b_sec2fst;
@@ -90,7 +90,7 @@ int	ss(t_stack *a, t_stack *b)
 	return (1);
 }
 
-int	ra(t_stack *a, t_stack *b, int print)
+int	ra(t_stack *a, int print)
 {
 	t_stack	*fst2last;
 	t_stack	*lst2sec;
@@ -108,7 +108,7 @@ int	ra(t_stack *a, t_stack *b, int print)
 	return (1);
 }
 
-int	rb(t_stack *a, t_stack *b, int print)
+int	rb(t_stack *b, int print)
 {
 	t_stack	*fst2last;
 	t_stack	*lst2sec;
@@ -128,14 +128,14 @@ int	rb(t_stack *a, t_stack *b, int print)
 
 int	rr(t_stack *a, t_stack *b)
 {
-	ra(a, b, 0);
-	rb(a, b, 0);
+	ra(a, 0);
+	rb(b, 0);
 	write(1, "rr\n", 3);
 	return (1);
 }
 
 
-int	rra(t_stack *a, t_stack *b, int print)
+int	rra(t_stack *a, int print)
 {
 	t_stack	*lst2fst;
 	t_stack	*fst2sec;
@@ -157,7 +157,7 @@ int	rra(t_stack *a, t_stack *b, int print)
 	return (1);
 }
 
-int	rrb(t_stack *a, t_stack *b, int print)
+int	rrb(t_stack *b, int print)
 {
 	t_stack	*lst2fst;
 	t_stack	*fst2sec;
@@ -181,8 +181,8 @@ int	rrb(t_stack *a, t_stack *b, int print)
 
 int	rrr(t_stack *a, t_stack *b)
 {
-	rra(a, b, 0);
-	rrb(a, b, 0);
+	rra(a, 0);
+	rrb(b, 0);
 	write(1, "rrr\n", 4);
 	return (1);
 }
@@ -327,33 +327,33 @@ void	ps_error_check(int argc, char **argv)
 
 int	swap3_case1(t_stack *a, t_stack *b)
 {
-	sa(a, b);
+	sa(a);
 	return (1);
 }
 
 int	swap3_case2(t_stack *a, t_stack *b)
 {
-	sa(a, b);
-	rra(a, b, 1);
+	sa(a);
+	rra(a, 1);
 	return (2);
 }
 
 int	swap3_case3(t_stack *a, t_stack *b)
 {
-	ra(a, b, 1);
+	ra(a, 1);
 	return (1);
 }
 
 int	swap3_case4(t_stack *a, t_stack *b)
 {
-	sa(a, b);
-	ra(a, b, 1);
+	sa(a);
+	ra(a, 1);
 	return (2);
 }
 
 int	swap3_case5(t_stack *a, t_stack *b)
 {
-	rra(a, b, 1);
+	rra(a, 1);
 	return (1);
 }
 
@@ -422,9 +422,9 @@ int		target_ra_b(t_stack *a, t_stack *b, int target_index, int ra_or_rra)
 	while (node_index < target_index)
 	{
 		if (ra_or_rra)
-			ra(a, b, 1);
+			ra(a, 1);
 		else
-			rra(a, b, 1);
+			rra(a, 1);
 		order++;
 		node_index++;
 	}
@@ -480,7 +480,7 @@ int	do_swap_2(t_stack *a, t_stack *b, int order, int argc)
 	if (argc == 2)
 		return (0);
 	if (a->next->num > a->next->next->num)
-		sa(a, b);
+		sa(a);
 	return (1);
 }
 
@@ -540,7 +540,7 @@ void	ft_qsort(int *ary, int left, int right)
 
 
 //syamashi
-/*
+///*
 
 int	half_set(t_stack *a, t_stack *b, int num_size)
 {
@@ -571,7 +571,47 @@ int	count_stack_size(t_stack *stack)
 
 int	b_quick_sort(t_stack *a, t_stack *b, int size)
 {
+	int	ary[size];
+	int	half_num;
+	int	size_i;
+	int	order;
 
+	order = 0;
+	size_i = 0;
+	node_to_ary(b, size, ary);
+	ft_qsort(ary, 0, size - 1);
+	half_num = ary[size / 2];
+	while (size_i < size)
+	{
+		if (b->next->num > half_num)
+			order += pa(a, b);
+		else
+			order += rb(b, 1);
+		size_i++;
+	}
+	return (order);
+}
+
+int	all_sort(t_stack *a, t_stack *b, int size)
+{
+	int	order;
+	int	b2a_i;
+
+	order = 0;
+	order += pa(a, b);
+	order += do_swap_3(b, a, order);
+	b2a_i = 0;
+	while (b2a_i < 3 && !b->next->head)
+	{
+		order += pa(a, b);
+		if (a->next->num > a->next->next->num)
+		{
+			order += sa(a);
+			order += ra(a, 1);
+		}
+		order += ra(a, 1);
+	}
+	return (order);
 }
 
 int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
@@ -589,14 +629,14 @@ int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
 			order += b_quick_sort(a, b, size);
 		if (size)
 			order += allsort(a, b, size);
-		while ((size = serch_a_size(a)) && size <= SORTSIZE)
-			order += allsort(a, b, size);
-		if (size)
-			order += a_quick_sort(a, b, size);
+		//while ((size = serch_a_size(a)) && size <= SORTSIZE)
+		//	order += allsort(a, b, size);
+		//if (size)
+		//	order += a_quick_sort(a, b, size);
 	}
 }
 
-*/
+//*/
 
 
 
