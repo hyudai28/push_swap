@@ -592,7 +592,7 @@ int	b_quick_sort(t_stack *a, t_stack *b, int size)
 	return (order);
 }
 
-int	all_sort(t_stack *a, t_stack *b, int size)
+int	allsort(t_stack *a, t_stack *b, int size)
 {
 	int	order;
 	int	b2a_i;
@@ -624,101 +624,19 @@ int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
 	sort_fin = 0;
 	while (sort_fin != num_size)
 	{
-		//b_settle_top(a, b);
 		while ((size = count_stack_size(b)) > SORTSIZE)
 			order += b_quick_sort(a, b, size);
 		if (size)
-			order += allsort(a, b, size);
-		//while ((size = serch_a_size(a)) && size <= SORTSIZE)
-		//	order += allsort(a, b, size);
-		//if (size)
-		//	order += a_quick_sort(a, b, size);
+			sort_fin += allsort(a, b, size);
+		if (sort_fin < num_size)
+			half_set(a, b, num_size - sort_fin);
+		else if (sort_fin > num_size)
+			write(1, "miss your algorithm\n", 20);
 	}
+	return (0);
 }
 
 //*/
-
-
-
-/* korean
-
-
-int	serch_median(t_stack *stack, int num_size)
-{
-	int	pivot;
-	int	stack_index;
-	int	stack_ary[num_size + 1];
-
-	stack_index = 0;
-	stack = stack->next;
-	while (stack_index < num_size)
-		stack_ary[stack_index++] = stack->num;
-	ft_qsort(stack_ary, 0, num_size - 1);
-	pivot = stack_ary[num_size / 2];
-	return (pivot);
-}
-
-
-void	A_to_B(t_stack *a, t_stack *b, int num_size, int pivot)
-{
-	t_order	order;
-	t_stack	*a_node;
-
-	order = (t_order){};
-	a_node = a->next;
-	pivot = serch_median(a, num_size);
-	while (order.node_index < num_size)
-	{
-		if (a_node->num > pivot)
-			order.r_order += ra(a, b, 1);
-		else
-			order.p_order += pb(a, b);
-		a_node = a_node->next;
-		order.node_index++;
-	}
-	while (order.r_order > 0)
-	{
-		rra(a, b, 1);
-		order.r_order--;
-	}
-	order.r_order_cpy = order.r_order;
-	order.p_order_cpy = order.p_order;
-	A_to_B(a, b, order.r_order_cpy, pivot);
-	B_to_A(a, b, order.p_order_cpy, pivot);
-}
-
-void	B_to_A(t_stack *a, t_stack *b, int num_size, int pivot)
-{
-	t_order	order;
-	t_stack	*b_node;
-
-	order = (t_order){};
-	b_node = b->next;
-	while (order.node_index < num_size)
-	{
-		if (b_node->num > pivot)
-			order.r_order += rb(a, b, 1);
-		else
-			order.p_order += pa(a, b);
-		b_node = b_node->next;
-		order.node_index++;
-	}
-	order.r_order_cpy = order.r_order;
-	order.p_order_cpy = order.p_order;
-	while (order.r_order > 0)
-	{
-		rra(a, b, 1);
-		order.r_order--;
-	}
-	order.r_order_cpy = order.r_order;
-	order.p_order_cpy = order.p_order;
-	A_to_B(a, b, order.r_order_cpy, pivot);
-	B_to_A(a, b, order.p_order_cpy, pivot);
-}
-
-
-*/
-
 
 void	show_data(int *ary, int size)
 {
