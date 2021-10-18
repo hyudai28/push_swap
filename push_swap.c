@@ -1,33 +1,11 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
-#define SORTSIZE 4
+#include "push_swap.h"
 
 
-typedef struct s_order
-{
-	int		r_order;
-	int		p_order;
-	int		node_index;
-	int		r_order_cpy;
-	int		p_order_cpy;
-}				t_order;
 
 
 //atoi!!!!!!!!!!!!!!!
 
-typedef struct s_stack
-{
-	struct s_stack	*next;
-	struct s_stack	*prev;
-	bool		head;
-	int		num;
-	int		boundary;
-	int		fin;
-}			t_stack;
+
 
 
 void	A_to_B(t_stack *a, t_stack *b, int num_size, int pivot);
@@ -150,21 +128,19 @@ int	rr(t_stack *a, t_stack *b)
 
 int	rra(t_stack *a, int print)
 {
-	t_stack	*lst2fst;
-	t_stack	*fst2sec;
-	t_stack	*middle;
+	t_stack	*target;
+	t_stack	*before_target;
+	t_stack	*next_head;
 
-	lst2fst = a->prev;
-	fst2sec = a->next;
-	middle = a->next->next;
-	lst2fst->next = fst2sec;
-	lst2fst->prev = a;
-	middle->next = a;
-	middle->prev = fst2sec;
-	fst2sec->next = middle;
-	fst2sec->prev = lst2fst;
-	a->next = lst2fst;
-	a->prev = middle;
+	target = a->prev;
+	next_head = a->next;
+	before_target = target->prev;
+	before_target->next = a;
+	target->next = next_head;
+	target->prev = a;
+	a->next = target;
+	a->prev = before_target;
+	next_head->prev = target;
 	if (print)
 		write(1, "rra\n", 4);
 	return (1);
@@ -172,21 +148,19 @@ int	rra(t_stack *a, int print)
 
 int	rrb(t_stack *b, int print)
 {
-	t_stack	*lst2fst;
-	t_stack	*fst2sec;
-	t_stack	*middle;
+	t_stack	*target;
+	t_stack	*before_target;
+	t_stack	*next_head;
 
-	lst2fst = b->prev;
-	fst2sec = b->next;
-	middle = b->next->next;
-	lst2fst->next = fst2sec;
-	lst2fst->prev = b;
-	middle->next = b;
-	middle->prev = fst2sec;
-	fst2sec->next = middle;
-	fst2sec->prev = lst2fst;
-	b->next = lst2fst;
-	b->prev = middle;
+	target = b->prev;
+	next_head = b->next;
+	before_target = target->prev;
+	before_target->next = b;
+	target->next = next_head;
+	target->prev = b;
+	b->next = target;
+	b->prev = before_target;
+	next_head->prev = target;
 	if (print)
 		write(1, "rrb\n", 4);
 	return (1);
@@ -703,6 +677,29 @@ void	show_data(int *ary, int size)
 	}
 }
 
+void	command_check(t_stack *a, t_stack *b, int argc)
+{
+	printf("command check\n");
+	//sa check
+	print_node(a, 0, argc);
+	sa(a);
+	print_node(a, 0, argc);
+	//ra check
+	// print_node(a, 0, argc);
+	ra(a, 1);
+	print_node(a, 0, argc);
+	//rra check
+	// print_node(a, 0, argc);
+	rra(a, 1);
+	print_node(a, 0, argc);
+	//pb check
+	// print_node(a, 0, argc);
+	pb(a, b);
+	print_node(a, 0, argc);
+	print_node(b, 1, argc);
+	exit(1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
@@ -719,6 +716,8 @@ printf("argc = [%d]\n", argc);
 	show_data(ary, argc - 1);
 
 
+command_check(a_stack, b_stack, argc);
+
 
 
 	order = 0;
@@ -732,5 +731,4 @@ printf("argc = [%d]\n", argc);
 		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
 	print_node(a_stack, 1, argc);
 	print_node(b_stack, 0, argc);
-	printf("order = [%d]\n", order);
 }
