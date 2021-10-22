@@ -544,4 +544,5 @@ printf("argc = [%d]\n", argc);
 		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
 	print_node(a_stack, 1, argc);
 	// print_node(b_stack, 0, argc);
+	system("leaks a.out");
 }
