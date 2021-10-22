@@ -60,20 +60,26 @@ void	ps_b_qsort(t_stack *a, t_stack *b)
 	int	boundary_flag;
 
 	boundary_flag = 1;
+	node_index = 0;
 	node_size = get_node_count(b);
 	median = get_median(b, node_size);
+	printf("nodesize[%d] median[%d]\n", node_size, median);
 	while (node_index < node_size)
 	{
-		if (a->num <= median)
+		if (b->next->num > median)
 		{
 			if (boundary_flag)
 			{
 				b->next->boundary = 1;
 				boundary_flag = 0;
 			}
-			pb(a, b);
+			// pb(a, b);
+			pa(a, b);
 		}
-		a = a->next;
+		else
+			rb(b, 1);
+		// print_node(b, 0, 0);
+		b = b->next;
 		node_index++;
 	}
 
@@ -269,7 +275,7 @@ int	b_quick_sort(t_stack *a, t_stack *b, int size)
 
 	while (get_node_count(b) > SORTSIZE)
 	{
-		printf("get counnt = [%d]\n", get_node_count(b));
+		printf("get count = [%d]\n", get_node_count(b));
 		ps_b_qsort(a, b);
 		back_i++;
 	}
@@ -397,6 +403,8 @@ int	half_a_to_b(t_stack *a, t_stack *b, int num_size, int sort_fin)
 			return (0);
 		}
 	}
+	if (a->next->boundary)
+		pb(a, b);
 	while (ra_index-- > 0)
 		rra(a, 1);
 	printf("a->next->fin = [%d], list_index = [%d], num_size = [%d]\n", a->next->fin, list_index, num_size);
@@ -410,7 +418,8 @@ int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
 {
 	int		size;
 	int		sort_fin;
-// exit(1);
+
+	int exit_index = 0;
 printf("do over 6\n");
 	sort_fin = 0;
 	while (half_a_to_b(a, b, num_size, sort_fin))

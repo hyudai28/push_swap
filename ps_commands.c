@@ -55,6 +55,7 @@ int	ra(t_stack *a, int print)
 	t_stack	*fst2last;
 	t_stack	*lst2sec;
 
+	restore_node_ptr(a);
 	fst2last = a->next;
 	lst2sec = a->prev;
 	a->next->next->prev = a;
@@ -73,6 +74,7 @@ int	rb(t_stack *b, int print)
 	t_stack	*fst2last;
 	t_stack	*lst2sec;
 
+	restore_node_ptr(b);
 	fst2last = b->next;
 	lst2sec = b->prev;
 	b->next->next->prev = b;
@@ -101,6 +103,7 @@ int	rra(t_stack *a, int print)
 	t_stack	*before_target;
 	t_stack	*next_head;
 
+	restore_node_ptr(a);
 	target = a->prev;
 	next_head = a->next;
 	before_target = target->prev;
@@ -121,10 +124,10 @@ int	rrb(t_stack *b, int print)
 	t_stack	*before_target;
 	t_stack	*next_head;
 
+	restore_node_ptr(b);
 	target = b->prev;
 	next_head = b->next;
 	before_target = b->prev->prev;
-
 	b->next = target;
 	b->prev = before_target;
 	target->prev = b;
@@ -148,6 +151,8 @@ int	pa(t_stack *a, t_stack *b)
 {
 	t_stack	*bfst2afst;
 
+	restore_node_ptr(a);
+	restore_node_ptr(b);
 	if (!b->next)
 	{
 		write(1, "error\n", 6);
@@ -174,6 +179,8 @@ int	pb(t_stack *a, t_stack *b)
 {
 	t_stack	*afst2bfst;
 
+	restore_node_ptr(a);
+	restore_node_ptr(b);
 	if (!a->next)
 	{
 		write(1, "error\n", 6);
