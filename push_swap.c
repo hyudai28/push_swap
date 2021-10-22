@@ -12,397 +12,75 @@ void	A_to_B(t_stack *a, t_stack *b, int num_size, int pivot);
 void	B_to_A(t_stack *a, t_stack *b, int num_size, int pivot);
 int	get_median(t_stack *a, int size);
 
-void	stack_next(t_stack *move)
+int	node_count(t_stack *node)
 {
-	t_stack *src;
+	int	ret;
 
-	src = move;
-	move = src->next;
-	move->prev = src;
-}
-
-int	sa(t_stack *a)
-{
-	t_stack	*a_fst2sec;
-	t_stack *a_sec2fst;
-
-	a_fst2sec = a->next;
-	a_sec2fst = a->next->next;
-	a->next = a_sec2fst;
-	a_fst2sec->prev = a_sec2fst;
-	a_fst2sec->next = a_sec2fst->next;
-	a_sec2fst->prev = a;
-	a_sec2fst->next = a_fst2sec;
-	write(1, "sa\n", 3);
-	return (1);
-}
-
-
-int	sb(t_stack *b)
-{
-	t_stack	*b_fst2sec;
-	t_stack *b_sec2fst;
-
-	b_fst2sec = b->next;
-	b_sec2fst = b->next->next;
-	b->next = b_sec2fst;
-	b_fst2sec->prev = b_sec2fst;
-	b_fst2sec->next = b_sec2fst->next;
-	b_sec2fst->prev = b;
-	b_sec2fst->next = b_fst2sec;
-	write(1, "sb\n", 3);
-	return (1);
-}
-
-int	ss(t_stack *a, t_stack *b)
-{
-	t_stack	*a_fst2sec;
-	t_stack *a_sec2fst;
-	t_stack	*b_fst2sec;
-	t_stack *b_sec2fst;
-
-	a_fst2sec = a;
-	a_fst2sec = a_fst2sec->next;
-	a_sec2fst = a_fst2sec->next;
-	a->next = a_sec2fst;
-	a_fst2sec->prev = a_sec2fst;
-	a_fst2sec->next = a_sec2fst->next;
-	a_sec2fst->prev = a;
-	a_sec2fst->next = a_fst2sec;
-	b_fst2sec = b;
-	b_fst2sec = b_fst2sec->next;
-	b_sec2fst = b_fst2sec->next;
-	b->next = b_sec2fst;
-	b_fst2sec->prev = b_sec2fst;
-	b_fst2sec->next = b_sec2fst->next;
-	b_sec2fst->prev = b;
-	b_sec2fst->next = b_fst2sec;
-	write(1, "ss\n", 3);
-	return (1);
-}
-
-int	ra(t_stack *a, int print)
-{
-	t_stack	*fst2last;
-	t_stack	*lst2sec;
-
-	fst2last = a->next;
-	lst2sec = a->prev;
-	a->next->next->prev = a;
-	a->next = a->next->next;
-	fst2last->next = a;
-	fst2last->prev = a->prev;
-	lst2sec->next = fst2last;
-	a->prev = fst2last;
-	if (print)
-		write(1, "ra\n", 3);
-	return (1);
-}
-
-int	rb(t_stack *b, int print)
-{
-	t_stack	*fst2last;
-	t_stack	*lst2sec;
-
-	fst2last = b->next;
-	lst2sec = b->prev;
-	b->next->next->prev = b;
-	b->next = b->next->next;
-	fst2last->next = b;
-	fst2last->prev = b->prev;
-	lst2sec->next = fst2last;
-	b->prev = fst2last;
-	if (print)
-		write(1, "rb\n", 3);
-	return (1);
-}
-
-int	rr(t_stack *a, t_stack *b)
-{
-	ra(a, 0);
-	rb(b, 0);
-	write(1, "rr\n", 3);
-	return (1);
-}
-
-
-int	rra(t_stack *a, int print)
-{
-	t_stack	*target;
-	t_stack	*before_target;
-	t_stack	*next_head;
-
-	target = a->prev;
-	next_head = a->next;
-	before_target = target->prev;
-	before_target->next = a;
-	target->next = next_head;
-	target->prev = a;
-	a->next = target;
-	a->prev = before_target;
-	next_head->prev = target;
-	if (print)
-		write(1, "rra\n", 4);
-	return (1);
-}
-
-int	rrb(t_stack *b, int print)
-{
-	t_stack	*target;
-	t_stack	*before_target;
-	t_stack	*next_head;
-
-	target = b->prev;
-	next_head = b->next;
-	before_target = target->prev;
-	before_target->next = b;
-	target->next = next_head;
-	target->prev = b;
-	b->next = target;
-	b->prev = before_target;
-	next_head->prev = target;
-	if (print)
-		write(1, "rrb\n", 4);
-	return (1);
-}
-
-int	rrr(t_stack *a, t_stack *b)
-{
-	rra(a, 0);
-	rrb(b, 0);
-	write(1, "rrr\n", 4);
-	return (1);
-}
-
-int	pa(t_stack *a, t_stack *b)
-{
-	t_stack	*bfst2afst;
-
-	if (!b->next)
+	if (!node->next)
 	{
-		write(1, "error\n", 6);
-		return (0);
-	}
-	bfst2afst = b->next;
-	b->next->next->prev = b;
-	b->next = b->next->next;
-	if (a->next)
-		a->next->prev = bfst2afst;
-	else
-		b->prev = bfst2afst;
-	if (a->next)
-		bfst2afst->next = a->next;
-	else
-		bfst2afst->next = a;
-	bfst2afst->prev = a;
-	a->next = bfst2afst;
-	write(1, "pa\n", 3);
-	return (1);
-}
-
-int	pb(t_stack *a, t_stack *b)
-{
-	t_stack	*afst2bfst;
-
-	if (!a->next)
-	{
-		write(1, "error\n", 6);
-		return (0);
-	}
-	afst2bfst = a->next;
-	a->next->next->prev = a;
-	a->next = a->next->next;
-	if (b->next)
-		b->next->prev = afst2bfst;
-	else
-		b->prev = afst2bfst;
-	if (b->next)
-		afst2bfst->next = b->next;
-	else
-		afst2bfst->next = b;
-	afst2bfst->prev = b;
-	b->next = afst2bfst;
-	write(1, "pb\n", 3);
-	return (1);
-}
-
-
-
-
-
-
-t_stack	*stack_setup(void)
-{
-	t_stack	*b;
-
-	b = malloc(sizeof(t_stack));
-	b->head = 1;
-	b->next = NULL;
-	b->prev = NULL;
-	b->num = 0;
-	return (b);
-}
-
-
-t_stack	*make_list(int argc, char **argv)
-{
-	t_stack	*head;
-	t_stack	*now;
-	t_stack	*new;
-	int		struct_count;
-
-	head = malloc(sizeof(t_stack));
-	head->head = 1;
-	head->next = NULL;
-	head->prev = NULL;
-	head->num = 0;
-	head->boundary = 0;
-	head->fin = 0;
-	now = head;
-	struct_count = 0;
-	while (++struct_count < argc)
-	{
-		new = malloc(sizeof(t_stack));
-		new->prev = now;
-		new->next = head;
-		new->num = atoi(argv[struct_count]);
-		new->head = 0;
-		new->boundary = 0;
-		new->fin = 0;
-		now->next = new;
-		now = now->next;
-	}
-	head->prev = now;
-	return (head);
-}
-
-
-void	print_node(t_stack *node, int node_num, int argc)
-{
-	int node_index;
-	char stack_type;
-
-	puts("=========print start=========\n");
-	if (node_num)
-		stack_type = 'a';
-	else
-		stack_type = 'b';
-	node_index = 1;
-	node = node->next;
-	while (!node->head)
-	{
-		printf("[%c]node[%d] = [%d]\n", stack_type, node_index, node->num);
-		node_index++;
-		node = node->next;
-	}
-	puts("\n=========print fin=========");
-}
-
-void	ps_error_check(int argc, char **argv)
-{
-	int	num_tmp;
-	int	arg_i;
-
-	if (argc < 2)
-	{
+		printf("error !! node繋がってなくね？\n");
 		exit(1);
 	}
-	num_tmp = 0;
-	arg_i = 0;
-	while (arg_i < argc)
+	node = node->next;
+	ret = 0;
+	while (!node->head && !node->fin)
 	{
-		num_tmp = atoi(argv[arg_i]);
-		arg_i++;
+		ret++;
+		node = node->next;
 	}
+	restore_node_ptr(node);
+	return (ret);
 }
 
-int	swap3_case1(t_stack *a, t_stack *b)
+//flagが1の時は中央値よりも上を飛ばす、0の時は以下を飛ばす
+void	ps_a_qsort(t_stack *a, t_stack *b)
 {
-	sa(a);
-	return (1);
-}
+	int	median;
+	int	node_size;
+	int	node_index;
 
-int	swap3_case2(t_stack *a, t_stack *b)
-{
-	sa(a);
-	rra(a, 1);
-	return (2);
-}
-
-int	swap3_case3(t_stack *a, t_stack *b)
-{
-	ra(a, 1);
-	return (1);
-}
-
-int	swap3_case4(t_stack *a, t_stack *b)
-{
-	sa(a);
-	ra(a, 1);
-	return (2);
-}
-
-int	swap3_case5(t_stack *a, t_stack *b)
-{
-	rra(a, 1);
-	return (1);
-}
-
-int	do_swap_3(t_stack *a, t_stack *b, int order)
-{
-	int	num1;
-	int	num2;
-	int	num3;
-
-	num1 = a->next->num;
-	num2 = a->next->next->num;
-	num3 = a->next->next->next->num;
-	if (num1 > num2)
+	node_size = get_node_count(a);
+	median = get_median(a, node_size);
+	while (node_index < node_size && !a->fin\
+		&& !a->boundary)
 	{
-		if (num2 < num3)
+		if (a->num <= median)
+			pb(a, b);
+		a = a->next;
+		node_index++;
+	}
+	restore_node_ptr(a);
+}
+
+void	ps_b_qsort(t_stack *a, t_stack *b)
+{
+	int	median;
+	int	node_size;
+	int	node_index;
+	int	boundary_flag;
+
+	boundary_flag = 1;
+	node_size = get_node_count(b);
+	median = get_median(b, node_size);
+	while (node_index < node_size)
+	{
+		if (a->num <= median)
 		{
-			if (num1 < num3)
-				order +=  swap3_case1(a, b);
-			else if (num1 > num3)
-				order += swap3_case3(a, b);
+			if (boundary_flag)
+			{
+				b->next->boundary = 1;
+				boundary_flag = 0;
+			}
+			pb(a, b);
 		}
-		else if (num2 > num3)
-			order += swap3_case2(a, b);
+		a = a->next;
+		node_index++;
 	}
-	else if (num2 > num3)
-	{
-		if (num1 < num3)
-			order += swap3_case4(a, b);
-		else if (num1 > num3)
-			order += swap3_case5(a, b);
-	}
-	return (order);
+
+	restore_node_ptr(b);
 }
 
-int	serch_min_num(t_stack *target)
-{
-	t_stack	*serch;
-	int		min_num;
-	int		num_index;
-	int		num_index_ret;
-
-	serch = target->next;
-	min_num = serch->num;
-	num_index = 1;
-	num_index_ret = 1;
-	while (!serch->head)
-	{
-		if (min_num > serch->num)
-		{
-			min_num = serch->num;
-			num_index_ret = num_index;
-		}
-		serch = serch->next;
-		num_index++;
-	}
-	return (num_index_ret);
-}
-
+/*
 int		target_ra_b(t_stack *a, t_stack *b, int target_index, int ra_or_rra)
 {
 	int	node_index;
@@ -459,19 +137,26 @@ int	do_swap_5(t_stack *a, t_stack *b, int order, int argc)
 		order += min_num_pb(a, b, argc);
 		node_index++;
 	}
-	order += do_swap_3(a, b, 0);
-	pa(a, b); 
+	order += swap_3(a, LIST_A);
+	pa(a, b);
 	pa(a, b);
 	printf("===============%s fin=============\n", __func__);
 	return (order + 2);
 }
+*/
 
-int	do_swap_2(t_stack *a, t_stack *b, int order, int argc)
+int	do_swap_2(t_stack *node, int list_flag)
 {
-	if (argc == 2)
-		return (0);
-	if (a->next->num > a->next->next->num)
-		sa(a);
+	if (list_flag == LIST_A)
+	{
+		if (node->next->num > node->next->next->num)
+			sa(node);
+	}
+	else
+	{
+		if (node->next->num > node->next->next->num)
+			sb(node);
+	}
 	return (1);
 }
 
@@ -481,7 +166,7 @@ void	node_to_ary(t_stack *a, int size, int *ary)
 
 	node_index = 0;
 	a = a->next;
-	while (node_index < size)
+	while (node_index < size && !a->fin)
 	{
 		ary[node_index] = a->num;
 		node_index++;
@@ -527,6 +212,28 @@ void	ft_qsort(int *ary, int left, int right)
 		ft_qsort(ary, j + 1, right);
 }
 
+int	unsorted_num(t_stack *node)
+{
+	int	unsorted;
+
+	unsorted = 0;
+	node = node->next;
+	while (!node->fin && !node->head)
+	{
+		node = node->next;
+		unsorted++;
+	}
+	restore_node_ptr(node);
+	return (unsorted);
+}
+
+int	all_to_b(t_stack *a, t_stack *b)
+{
+	while (!a->next->fin)
+		pb(a, b);
+	return (1);
+}
+
 int	count_stack_size(t_stack *stack)
 {
 	int	count_size;
@@ -545,53 +252,80 @@ int	b_quick_sort(t_stack *a, t_stack *b, int size)
 {
 	int	ary[size];
 	int	half_num;
-	int	size_i;
+	int	back_i;
 	int	order;
 
 	printf(__func__);
 	puts("");
+	printf("__________b_quick_sort_________\n\
+	この関数のゴールはBの要素を４個以下にすることです。\n\
+	以下の手順で実施されます。\n\
+	1.while文 Bの中にあるリストが４つ以下になるまでソート\n\
+		1-1.Bの中央値を手に入れる\n\
+		1-2.中央値よりも上の値をAに戻す。\n\
+		ところでこれ関数にできそうですね\n");
 	order = 0;
-	size_i = 0;
-	node_to_ary(b, size, ary);
-	ft_qsort(ary, 0, size - 1);
-	// half_num = ary[size / 2];
-	half_num = get_median(b, size);
-	while (size_i < size)
+	back_i = 0;
+
+	while (get_node_count(b) > SORTSIZE)
 	{
-		if (b->next->num > half_num)
-		{
-			if (size_i == 0)
-				b->next->boundary = 1;
-			order += pa(a, b);
-		}
-		else
-			order += rb(b, 1);
-		size_i++;
+		printf("get counnt = [%d]\n", get_node_count(b));
+		ps_b_qsort(a, b);
+		back_i++;
 	}
-	return (order);
+	// while (back_i > 0)
+		// rra(a, 1);
+	print_node(a, 1, 0);
+	print_node(b, 0, 0);
+	return (0);
 }
 
 int	allsort(t_stack *a, t_stack *b)
 {
-	int	order;
-	int	b2a_i;
+	int		order;
+	int		b2a_i;
+	int		b_index;
+	bool	flag;
 
-	order = 0;
-	order += pa(a, b);
-	order += do_swap_3(b, a, order);
-	b2a_i = 0;
-	while (b2a_i < 3 && !b->next->head)
+	printf("_____allsort_____\n\
+	この関数では残り４つ以下となったBをソートする関数です。\n\
+	以下の手順で実装されます。\n\
+	1.４つの場合は先頭をAに飛ばします。\n\
+	2.３つとなったBでソートをかけます。\n\
+	3.Aに飛ばします。\n\
+	4.１を実行した場合は戻す前にAの先頭と比較を行い\n\
+	Aの先頭の方が小さい場合は先にAの先頭をraしフラグを立てます。\n");
+
+	b2a_i = get_node_count(b);
+	b_index = get_node_count(b);
+	if (get_node_count(b) == 4)
 	{
-		order += pa(a, b);
-		if (a->next->num > a->next->next->num)
-		{
-			order += sa(a);
-			order += ra(a, 1);
-		}
-		order += ra(a, 1);
-		b2a_i++;
+		pa(a, b);
+		flag = 1;
 	}
-	return (b2a_i);
+	if (b2a_i == 2)
+		do_swap_2(b, LIST_B);
+	else
+		swap_3(b, LIST_B);
+	while (b2a_i > 0)
+	{
+		if (flag)
+		{
+			if (b->next->num > a->next->num)
+			{
+				ra(a, 1);
+				a->prev->fin = 1;
+				flag = 0;
+				b2a_i--;
+				b_index--;
+			}
+		}
+		pa(a, b);
+		ra(a, 1);
+		a->prev->fin = 1;
+		b2a_i--;
+	}
+	return (0);
 }
 
 int	get_median(t_stack *a, int size)
@@ -616,37 +350,59 @@ int	half_a_to_b(t_stack *a, t_stack *b, int num_size, int sort_fin)
 {
 	int	list_index;
 	int	median_num;
+	int	ra_index;
+	int	unsorted;
+
+	printf("________half_a_to_b________\n\
+	この関数のゴールは中央値よりも下の値をスタックAからスタックBに飛ばすことが目的です。\n\
+	以下の手順で実施されます。\n\
+	1.中央値を手に入れるget_median\n\
+	2.ここに最適化用の処理が入る可能性があります。\n\
+	3.while文で中央値よりも小さい値をBに飛ばします\n\
+		3-1.aがソート済みの場所まで確認した場合whileが終了します。\n\
+		3-2.aのインデックスがaの最後まで進んだ時whileが終了します。\n\
+	4.未実装__aのアドレスを先頭に戻します。\n");
 
 	list_index = 0;
-	median_num = get_median(a, num_size);
-	printf("median_num = %d\n", median_num);
-	if (a->head == 1)
-		printf("a-.head = %d, a->num = %d\n", a->head, a->num);
-	if (a->next->fin == 1)
+	ra_index = 0;
+	unsorted = unsorted_num(a);
+	printf("unsorted = [%d]\n", unsorted);
+	if (!unsorted)
 		return (0);
-	if (a->next->boundary == 1)
-	{
-		pb(a, b);
-		list_index++;
-	}
-	while (!a->next->fin && list_index < num_size)
+	else if (unsorted <= SORTSIZE)
+		return (all_to_b(a, b));
+	median_num = get_median(a, node_count(a));
+
+
+
+	printf("median_num = %d\n", median_num);
+
+	while (!a->next->fin && list_index <= num_size)
 	{
 		if (a->next->boundary == 1 || a->next->fin == 1)
 			break;
 		if (a->next->num < median_num || sort_fin)
-		{
-			printf("a->next->num = %d\n", a->next->num);
 			pb(a, b);
-		}
 		else
 		{
-			printf("a->next->num = %d\n", a->next->num);
 			ra(a, 1);
+			ra_index++;
 		}
 		list_index++;
 		if (a->next->head == 1)
+		{
+			print_node(a, 1, num_size);
+			print_node(b, 0, num_size);
+			// break ;
 			return (0);
+		}
 	}
+	while (ra_index-- > 0)
+		rra(a, 1);
+	printf("a->next->fin = [%d], list_index = [%d], num_size = [%d]\n", a->next->fin, list_index, num_size);
+	print_node(a, 1, num_size);
+	print_node(b, 0, num_size);
+	printf("=====half a to b=========\n");
 	return (1);
 }
 
@@ -654,13 +410,15 @@ int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
 {
 	int		size;
 	int		sort_fin;
-
+// exit(1);
 printf("do over 6\n");
 	sort_fin = 0;
 	while (half_a_to_b(a, b, num_size, sort_fin))
 	{
 		b_quick_sort(a, b, num_size);
 		sort_fin = allsort(a, b);
+		print_node(a, 1, num_size);
+		print_node(b, 0, num_size);
 	}
 	return (0);
 }
@@ -680,6 +438,38 @@ void	show_data(int *ary, int size)
 void	command_check(t_stack *a, t_stack *b, int argc)
 {
 	printf("command check\n");
+
+	print_node(a, 1, argc);
+	pb(a, b);
+	pb(a, b);
+	pb(a, b);
+	pb(a, b);
+	// pb(a, b);
+	// pb(a, b);
+	// pb(a, b);
+	print_node(a, 1, argc);
+	print_node(b, 0, argc);
+	pa(a, b);
+	// print_node(a, 1, argc);
+	// print_node(b, 0, argc);
+	sb(b);
+	print_node(a, 1, argc);
+	print_node(b, 0, argc);
+	rrb(b, 1);
+	print_node(a, 1, argc);
+	print_node(b, 0, argc);
+	ra(a, 1);
+	// rrb(b, 1);
+	// rrb(b, 1);
+	// rrb(b, 1);
+	print_node(a, 1, argc);
+	print_node(b, 0, argc);
+
+
+
+
+
+	/*
 	//sa check
 	print_node(a, 0, argc);
 	sa(a);
@@ -697,7 +487,19 @@ void	command_check(t_stack *a, t_stack *b, int argc)
 	pb(a, b);
 	print_node(a, 0, argc);
 	print_node(b, 1, argc);
+	pa(a, b);
+	print_node(a, 0, argc);
+	print_node(b, 1, argc);
+	*/
 	exit(1);
+}
+
+void	print_check(t_stack *a, t_stack *b)
+{
+	print_node(b, 1, 0);
+	print_node(a, 1, 0);
+	print_node(b, 0, 0);
+	exit (1);
 }
 
 int	main(int argc, char **argv)
@@ -706,6 +508,7 @@ int	main(int argc, char **argv)
 	t_stack *b_stack;
 	int		order;
 
+printf("000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n");
 printf("argc = [%d]\n", argc);
 	ps_error_check(argc, argv);
 	b_stack = stack_setup();
@@ -715,20 +518,21 @@ printf("argc = [%d]\n", argc);
 	node_to_ary(a_stack, argc - 1, ary);
 	show_data(ary, argc - 1);
 
-
-command_check(a_stack, b_stack, argc);
+	// print_check(a_stack, b_stack);
+// command_check(a_stack, b_stack, argc);
 
 
 
 	order = 0;
 	if (argc <= 3)
-		order = do_swap_2(a_stack, b_stack, order, argc);
+		order = do_swap_2(a_stack, LIST_A);
 	else if (argc == 4)
-		order = do_swap_3(a_stack, b_stack, order);
+		order = swap_3(a_stack, LIST_A);
 	else if (argc <= 6)
-		order = do_swap_5(a_stack, b_stack, order, argc);
+		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
+		// order = do_swap_5(a_stack, b_stack, order, argc);
 	else
 		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
 	print_node(a_stack, 1, argc);
-	print_node(b_stack, 0, argc);
+	// print_node(b_stack, 0, argc);
 }
