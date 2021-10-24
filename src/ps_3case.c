@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "./../include/push_swap.h"
 
 int	swap3_case1(t_stack *target, int list_flag)
 {

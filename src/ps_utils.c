@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "./../include/push_swap.h"
 
 void	ps_error_check(int argc, char **argv)
 {
@@ -6,9 +6,7 @@ void	ps_error_check(int argc, char **argv)
 	int	arg_i;
 
 	if (argc < 2)
-	{
 		exit(1);
-	}
 	num_tmp = 0;
 	arg_i = 0;
 	while (arg_i < argc)
