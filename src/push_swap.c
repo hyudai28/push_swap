@@ -334,6 +334,7 @@ void	sorted_check(int *ary, int argc)
 	exit (1);
 }
 
+
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;

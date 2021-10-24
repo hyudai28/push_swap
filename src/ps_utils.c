@@ -1,21 +1,35 @@
 #include "./../include/push_swap.h"
 
-void	ps_error_check(int argc, char **argv)
+void	error_exit(void)
 {
-	int	num_tmp;
+	printf("Error\n");
+	exit(1);
+}
+
+void	arg_error(long num, char *argv)
+{
+	if (num == 0)
+	{
+		if (argv[0] != '0')
+			error_exit();
+	}
+	if (num < -2147483648 || num > 2147483647)
+			error_exit();
+}
+
+void ps_error_check(int argc, char **argv)
+{
+	long	num_tmp;
 	int	arg_i;
 
 	if (argc < 2)
 		exit(1);
 	num_tmp = 0;
-	arg_i = 0;
+	arg_i = 1;
 	while (arg_i < argc)
 	{
 		num_tmp = ft_atoi(argv[arg_i]);
-		if (num_tmp == -1)
-		{
-			
-		}
+		arg_error(num_tmp, argv[arg_i]);
 		arg_i++;
 	}
 }

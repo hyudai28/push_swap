@@ -6,7 +6,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "./../libft/libft.h"
+# include <limits.h>
+//# include "./../libft/libft.h"
 
 # define SORTSIZE 4
 # define LIST_A 0
@@ -63,6 +64,14 @@ int	get_node_count(t_stack *node);
 //ps_utils
 void	ps_error_check(int argc, char **argv);
 int	serch_min_num(t_stack *target);
+
+//libft
+
+//int    ft_atoi(const char *nptr);
+long    ft_atoi(const char *nptr);
+int	ft_isspace(int c);
+int	ft_isdigit(int c);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 
 #endif
