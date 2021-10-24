@@ -6,11 +6,11 @@
 /*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 00:24:16 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/24 15:59:33 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/10/14 17:38:00 by hyudai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../include/push_swap.h"
+#include "libft.h"
 
 static int	ft_atoi_error(const char *str, int flag)
 {

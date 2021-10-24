@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/13 00:07:14 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/24 16:00:14 by hyudai           ###   ########.fr       */
+/*   Created: 2020/11/09 14:12:41 by hyudai            #+#    #+#             */
+/*   Updated: 2020/11/25 00:50:45 by hyudai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../include/push_swap.h"
+#include "libft.h"
 
-int	ft_isspace(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	c = (char)c;
-	if (('\t' <= c && c <= '\r') || c == ' ')
-		return (1);
-	return (0);
+	void	*str;
+
+	str = malloc(count * size);
+	if (str == NULL)
+		return (NULL);
+	ft_bzero(str, count * size);
+	return ((void *)str);
 }

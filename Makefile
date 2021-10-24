@@ -10,9 +10,6 @@ SRCS += $(SOURCE_DIR)/ps_3case.c
 SRCS += $(SOURCE_DIR)/ps_commands.c
 SRCS += $(SOURCE_DIR)/ps_list_utils.c
 SRCS += $(SOURCE_DIR)/ps_utils.c
-SRCS += $(MINILIB_DIR)/ft_atoi.c
-SRCS += $(MINILIB_DIR)/ft_isdigit.c
-SRCS += $(MINILIB_DIR)/ft_isspace.c
 
 
 OBJS := ${SRCS:.c=.o}
@@ -20,16 +17,19 @@ OBJS := ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	make -C libft
+		$(CC) $(CFLAGS) ./libft/libft.a -o $(NAME) $(OBJS)
 
 .c.o:
 		$(CC) $(CFLAG) -c $< -o $@
 
 clean:
 		rm -f $(OBJS)
+		make clean -C libft
 
 fclean: clean
 		rm -rf $(NAME)
+		make fclean -C libft
 
 re: fclean all
 

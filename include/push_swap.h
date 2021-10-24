@@ -6,8 +6,9 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include "./../libft/libft.h"
 
-#define SORTSIZE 4
+# define SORTSIZE 4
 # define LIST_A 0
 # define LIST_B 1
 
@@ -57,15 +58,11 @@ t_stack	*stack_setup(void);
 t_stack	*make_list(int argc, char **argv);
 void	print_node(t_stack *node, int node_num, int argc);
 void	restore_node_ptr(t_stack *node);
-int		get_node_count(t_stack *node);
+int	get_node_count(t_stack *node);
 
 //ps_utils
 void	ps_error_check(int argc, char **argv);
 int	serch_min_num(t_stack *target);
 
-//mini libft
-int	ft_atoi(const char *str);
-int	ft_isdigit(int c);
-int	ft_isspace(int c);
 
 #endif

@@ -1,13 +1,5 @@
 #include "./../include/push_swap.h"
 
-
-
-
-//atoi!!!!!!!!!!!!!!!
-
-
-
-
 void	A_to_B(t_stack *a, t_stack *b, int num_size, int pivot);
 void	B_to_A(t_stack *a, t_stack *b, int num_size, int pivot);
 int	get_median(t_stack *a, int size);
