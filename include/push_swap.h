@@ -63,5 +63,9 @@ int		get_node_count(t_stack *node);
 void	ps_error_check(int argc, char **argv);
 int	serch_min_num(t_stack *target);
 
+//mini libft
+int	ft_atoi(const char *str);
+int	ft_isdigit(int c);
+int	ft_isspace(int c);
 
 #endif

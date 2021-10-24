@@ -11,7 +11,7 @@ void	ps_error_check(int argc, char **argv)
 	arg_i = 0;
 	while (arg_i < argc)
 	{
-		num_tmp = atoi(argv[arg_i]);
+		num_tmp = ft_atoi(argv[arg_i]);
 		arg_i++;
 	}
 }
