@@ -323,9 +323,7 @@ void	sorted_check(int *ary, int argc)
 	int	ary_index;
 
 	ary_index = 0;
-	if (argc == 2)
-		exit(1);
-	while (ary_index + 1 < argc - 1)
+	while (ary_index + 1 < argc)
 	{
 		if (ary[ary_index] > ary[ary_index + 1])
 			return ;
@@ -363,6 +361,30 @@ int	do_swap_over_5(t_stack *a, t_stack *b, int num_size)
 	ra(a, 1);
 }
 
+void	ary_check(t_stack *a, int num_size, int *ary)
+{
+	int	i;
+
+	node_to_ary(a, num_size, ary);
+	sorted_check(ary, num_size);
+	ft_qsort(ary, 0, num_size);
+	i = 0;
+	while (i + 1 < num_size)
+	{
+		printf("ary[%d]=[%d]\n", i, ary[i]);
+		if (ary[i] == ary[i + 1])
+		{
+			puts("\n");
+			printf("ary[%d] = [%d]\n", i, ary[i]);
+			printf("ary[%d] = [%d]\n", i + 1, ary[i + 1]);
+			puts("\n");
+			//error_exit();
+		}
+		i++;
+	}
+	exit (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
@@ -373,8 +395,8 @@ int	main(int argc, char **argv)
 	ps_error_check(argc, argv);
 	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
-	node_to_ary(a_stack, argc - 1, ary);
-	sorted_check(ary, argc);
+	ary_check(a_stack, argc - 1, ary);
+
 	order = 0;
 	if (argc <= 3)
 		order = do_swap_2(a_stack, LIST_A);

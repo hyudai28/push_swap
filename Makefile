@@ -13,8 +13,8 @@ SRCS += $(SOURCE_DIR)/ps_list_utils.c
 SRCS += $(SOURCE_DIR)/ps_utils.c
 SRCS += $(SOURCE_DIR)/libft_utils.c
 
-
 OBJS := ${SRCS:.c=.o}
+
 
 all: $(NAME)
 

@@ -17,20 +17,6 @@ void	arg_error(long num, char *argv)
 			error_exit();
 }
 
-void	duplicate_check(int *ary, int argc)
-{
-	int	i;
-
-	ft_qsort(ary, 0, argc - 1);
-	i = 0;
-	while (i + 1 < argc - 1)
-	{
-		if (ary[i] == ary[i + 1])
-			error_exit();
-		i++;
-	}
-}
-
 void ps_error_check(int argc, char **argv)
 {
 	long	num_tmp;
@@ -48,7 +34,6 @@ void ps_error_check(int argc, char **argv)
 		ary[arg_i - 1] = num_tmp;
 		arg_i++;
 	}
-	duplicate_check(ary, argc);
 }
 
 int	serch_min_num(t_stack *target)
