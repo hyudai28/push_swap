@@ -4,6 +4,7 @@ CC := gcc
 CFLAGS := -Wall -Werror -Wextra
 SOURCE_DIR = src
 MINILIB_DIR = mini_libft
+OBJDIR = obj
 
 SRCS := $(SOURCE_DIR)/push_swap.c
 SRCS += $(SOURCE_DIR)/ps_3case.c

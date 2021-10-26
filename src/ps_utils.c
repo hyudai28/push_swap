@@ -17,10 +17,25 @@ void	arg_error(long num, char *argv)
 			error_exit();
 }
 
+void	duplicate_check(int *ary, int argc)
+{
+	int	i;
+
+	ft_qsort(ary, 0, argc - 1);
+	i = 0;
+	while (i + 1 < argc - 1)
+	{
+		if (ary[i] == ary[i + 1])
+			error_exit();
+		i++;
+	}
+}
+
 void ps_error_check(int argc, char **argv)
 {
 	long	num_tmp;
-	int	arg_i;
+	int		ary[argc - 1];
+	int		arg_i;
 
 	if (argc < 2)
 		exit(1);
@@ -30,8 +45,10 @@ void ps_error_check(int argc, char **argv)
 	{
 		num_tmp = ft_atoi(argv[arg_i]);
 		arg_error(num_tmp, argv[arg_i]);
+		ary[arg_i - 1] = num_tmp;
 		arg_i++;
 	}
+	duplicate_check(ary, argc);
 }
 
 int	serch_min_num(t_stack *target)

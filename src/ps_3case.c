@@ -66,19 +66,19 @@ int	swap_3(t_stack *target, int list_flag)
 	num1 = target->next->num;
 	num2 = target->next->next->num;
 	num3 = target->next->next->next->num;
-	if (num1 > num2)
+	if (num1 >= num2)
 	{
-		if (num2 < num3)
+		if (num2 <= num3)
 		{
 			if (num1 < num3)
 				swap3_case1(target,list_flag);
-			else if (num1 > num3)
+			else if (num1 >= num3)
 				swap3_case3(target, list_flag);
 		}
 		else if (num2 > num3)
 			swap3_case2(target, list_flag);
 	}
-	else if (num2 > num3)
+	else if (num2 >= num3)
 	{
 		if (num1 < num3)
 			swap3_case4(target, list_flag);

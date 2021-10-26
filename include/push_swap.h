@@ -63,7 +63,9 @@ int	get_node_count(t_stack *node);
 
 //ps_utils
 void	ps_error_check(int argc, char **argv);
+void	sort_check(int argc, char **argv);
 int	serch_min_num(t_stack *target);
+void	ft_qsort(int *ary, int left, int right);
 
 //libft
 

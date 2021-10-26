@@ -334,18 +334,45 @@ void	sorted_check(int *ary, int argc)
 	exit (1);
 }
 
+int	do_swap_over_5(t_stack *a, t_stack *b, int num_size)
+{
+	int	median;
+	int	i;
+	int	pb_index;
+	
+	median = get_median(a, 5);
+	i = 0;
+	pb_index = 0;
+	while (i++ < 5)
+	{
+		if (a->next->num > median)
+		{
+			pb(a, b);
+			pb_index++;
+		}
+		else
+			ra(a, 1);
+		if (pb_index == 3)
+			break ;
+	}
+	swap_3(a, LIST_A);
+	do_swap_2(b, LIST_B);
+	pa(a, b);
+	ra(a, 1);
+	pa(a, b);
+	ra(a, 1);
+}
 
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
 	t_stack *b_stack;
 	int		order;
+	int ary[argc - 1];
 
 	ps_error_check(argc, argv);
 	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
-	int ary_index = 0;
-	int ary[argc - 1];
 	node_to_ary(a_stack, argc - 1, ary);
 	sorted_check(ary, argc);
 	order = 0;
@@ -354,7 +381,7 @@ int	main(int argc, char **argv)
 	else if (argc == 4)
 		order = swap_3(a_stack, LIST_A);
 	else if (argc <= 6)
-		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
+		order = do_swap_over_5(a_stack, b_stack, argc - 1);
 	else
 		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
 	// print_node(a_stack, 1, argc);

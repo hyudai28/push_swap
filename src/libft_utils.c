@@ -13,30 +13,6 @@ int	ft_isspace(int c)
 	return (0);
 }
 
-//long    ft_atoi(const char *nptr)
-//{
-//    int        is_minus;
-//    long    result;
-
-//    is_minus = 1;
-//    result = 0;
-//    while (ft_isspace(*nptr) == 1)
-//        nptr++;
-//    if (*nptr == '-' || *nptr == '+')
-//    {
-//        if (*nptr == '-')
-//            is_minus = -1;
-//        nptr++;
-//    }
-//    while (ft_isdigit(*nptr) != 0)
-//    {
-//        result = 10 * result + (*nptr - '0');
-//        nptr++;
-//    }
-//    return ((result * is_minus));
-//}
-
-
 static int	ft_atoi_error(const char *str, int flag)
 {
 	int		i;
