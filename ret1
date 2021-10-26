@@ -1,0 +1,1346 @@
+rm -f src/push_swap.o src/ps_3case.o src/ps_commands.o src/ps_list_utils.o src/ps_utils.o src/libft_utils.o
+rm -rf push_swap
+gcc  -c src/push_swap.c -o src/push_swap.o
+gcc  -c src/ps_3case.c -o src/ps_3case.o
+gcc  -c src/ps_commands.c -o src/ps_commands.o
+gcc  -c src/ps_list_utils.c -o src/ps_list_utils.o
+gcc  -c src/ps_utils.c -o src/ps_utils.o
+gcc  -c src/libft_utils.c -o src/libft_utils.o
+gcc  -o push_swap src/push_swap.o src/ps_3case.o src/ps_commands.o src/ps_list_utils.o src/ps_utils.o src/libft_utils.o
+ra
+ra
+pb
+pb
+pb
+ra
+pb
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+pb
+pb
+ra
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+pb
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+pb
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+ra
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+pb
+ra
+pb
+pb
+ra
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+pb
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+pb
+pb
+ra
+pb
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+=========print start=========
+
+[a]node[  1] = [      33]___fin =[0]___boundary = [0]
+[a]node[  2] = [     223]___fin =[0]___boundary = [0]
+[a]node[  3] = [      41]___fin =[0]___boundary = [0]
+[a]node[  4] = [     189]___fin =[0]___boundary = [0]
+[a]node[  5] = [      62]___fin =[0]___boundary = [0]
+[a]node[  6] = [      77]___fin =[0]___boundary = [0]
+[a]node[  7] = [      46]___fin =[0]___boundary = [0]
+[a]node[  8] = [     152]___fin =[0]___boundary = [0]
+[a]node[  9] = [      89]___fin =[0]___boundary = [0]
+[a]node[ 10] = [      35]___fin =[0]___boundary = [0]
+[a]node[ 11] = [      73]___fin =[0]___boundary = [0]
+[a]node[ 12] = [     164]___fin =[0]___boundary = [0]
+[a]node[ 13] = [     236]___fin =[0]___boundary = [0]
+[a]node[ 14] = [     134]___fin =[0]___boundary = [0]
+[a]node[ 15] = [      26]___fin =[0]___boundary = [0]
+[a]node[ 16] = [     133]___fin =[0]___boundary = [0]
+[a]node[ 17] = [     240]___fin =[0]___boundary = [0]
+[a]node[ 18] = [     211]___fin =[0]___boundary = [0]
+[a]node[ 19] = [     238]___fin =[0]___boundary = [0]
+[a]node[ 20] = [     193]___fin =[0]___boundary = [0]
+[a]node[ 21] = [      17]___fin =[0]___boundary = [0]
+[a]node[ 22] = [      37]___fin =[0]___boundary = [0]
+[a]node[ 23] = [     221]___fin =[0]___boundary = [0]
+[a]node[ 24] = [     242]___fin =[0]___boundary = [0]
+[a]node[ 25] = [     150]___fin =[0]___boundary = [0]
+[a]node[ 26] = [     219]___fin =[0]___boundary = [0]
+[a]node[ 27] = [      51]___fin =[0]___boundary = [0]
+[a]node[ 28] = [     231]___fin =[0]___boundary = [0]
+[a]node[ 29] = [      72]___fin =[0]___boundary = [0]
+[a]node[ 30] = [     169]___fin =[0]___boundary = [0]
+[a]node[ 31] = [     109]___fin =[0]___boundary = [0]
+[a]node[ 32] = [     104]___fin =[0]___boundary = [0]
+[a]node[ 33] = [     148]___fin =[0]___boundary = [0]
+[a]node[ 34] = [     239]___fin =[0]___boundary = [0]
+[a]node[ 35] = [     156]___fin =[0]___boundary = [0]
+[a]node[ 36] = [       8]___fin =[0]___boundary = [0]
+[a]node[ 37] = [     207]___fin =[0]___boundary = [0]
+[a]node[ 38] = [     107]___fin =[0]___boundary = [0]
+[a]node[ 39] = [     114]___fin =[0]___boundary = [0]
+[a]node[ 40] = [     172]___fin =[0]___boundary = [0]
+[a]node[ 41] = [      63]___fin =[0]___boundary = [0]
+[a]node[ 42] = [     135]___fin =[0]___boundary = [0]
+[a]node[ 43] = [     165]___fin =[0]___boundary = [0]
+[a]node[ 44] = [     202]___fin =[0]___boundary = [0]
+[a]node[ 45] = [      67]___fin =[0]___boundary = [0]
+[a]node[ 46] = [      18]___fin =[0]___boundary = [0]
+[a]node[ 47] = [     195]___fin =[0]___boundary = [0]
+[a]node[ 48] = [      27]___fin =[0]___boundary = [0]
+[a]node[ 49] = [     246]___fin =[0]___boundary = [0]
+[a]node[ 50] = [       7]___fin =[0]___boundary = [0]
+[a]node[ 51] = [     155]___fin =[0]___boundary = [0]
+[a]node[ 52] = [      97]___fin =[0]___boundary = [0]
+[a]node[ 53] = [      60]___fin =[0]___boundary = [0]
+[a]node[ 54] = [     222]___fin =[0]___boundary = [0]
+[a]node[ 55] = [     138]___fin =[0]___boundary = [0]
+[a]node[ 56] = [     249]___fin =[0]___boundary = [0]
+[a]node[ 57] = [     141]___fin =[0]___boundary = [0]
+[a]node[ 58] = [     179]___fin =[0]___boundary = [0]
+[a]node[ 59] = [      94]___fin =[0]___boundary = [0]
+[a]node[ 60] = [     204]___fin =[0]___boundary = [0]
+[a]node[ 61] = [     206]___fin =[0]___boundary = [0]
+[a]node[ 62] = [     145]___fin =[0]___boundary = [0]
+[a]node[ 63] = [     200]___fin =[0]___boundary = [0]
+[a]node[ 64] = [      50]___fin =[0]___boundary = [0]
+[a]node[ 65] = [      92]___fin =[0]___boundary = [0]
+[a]node[ 66] = [      14]___fin =[0]___boundary = [0]
+[a]node[ 67] = [      82]___fin =[0]___boundary = [0]
+[a]node[ 68] = [     123]___fin =[0]___boundary = [0]
+[a]node[ 69] = [     129]___fin =[0]___boundary = [0]
+[a]node[ 70] = [     225]___fin =[0]___boundary = [0]
+[a]node[ 71] = [      52]___fin =[0]___boundary = [0]
+[a]node[ 72] = [     177]___fin =[0]___boundary = [0]
+[a]node[ 73] = [      86]___fin =[0]___boundary = [0]
+[a]node[ 74] = [      84]___fin =[0]___boundary = [0]
+[a]node[ 75] = [      39]___fin =[0]___boundary = [0]
+[a]node[ 76] = [     173]___fin =[0]___boundary = [0]
+[a]node[ 77] = [     180]___fin =[0]___boundary = [0]
+[a]node[ 78] = [     228]___fin =[0]___boundary = [0]
+[a]node[ 79] = [     241]___fin =[0]___boundary = [0]
+[a]node[ 80] = [      85]___fin =[0]___boundary = [0]
+[a]node[ 81] = [     229]___fin =[0]___boundary = [0]
+[a]node[ 82] = [      90]___fin =[0]___boundary = [0]
+[a]node[ 83] = [      20]___fin =[0]___boundary = [0]
+[a]node[ 84] = [     212]___fin =[0]___boundary = [0]
+[a]node[ 85] = [      66]___fin =[0]___boundary = [0]
+[a]node[ 86] = [     105]___fin =[0]___boundary = [0]
+[a]node[ 87] = [     224]___fin =[0]___boundary = [0]
+[a]node[ 88] = [     122]___fin =[0]___boundary = [0]
+[a]node[ 89] = [     111]___fin =[0]___boundary = [0]
+[a]node[ 90] = [      69]___fin =[0]___boundary = [0]
+[a]node[ 91] = [     119]___fin =[0]___boundary = [0]
+[a]node[ 92] = [      65]___fin =[0]___boundary = [0]
+[a]node[ 93] = [      70]___fin =[0]___boundary = [0]
+[a]node[ 94] = [      54]___fin =[0]___boundary = [0]
+[a]node[ 95] = [     194]___fin =[0]___boundary = [0]
+[a]node[ 96] = [     183]___fin =[0]___boundary = [0]
+[a]node[ 97] = [      15]___fin =[0]___boundary = [0]
+[a]node[ 98] = [     244]___fin =[0]___boundary = [0]
+[a]node[ 99] = [     185]___fin =[0]___boundary = [0]
+[a]node[100] = [      98]___fin =[0]___boundary = [0]
+[a]node[101] = [       4]___fin =[0]___boundary = [0]
+[a]node[102] = [     220]___fin =[0]___boundary = [0]
+[a]node[103] = [     216]___fin =[0]___boundary = [0]
+[a]node[104] = [      10]___fin =[0]___boundary = [0]
+[a]node[105] = [     174]___fin =[0]___boundary = [0]
+[a]node[106] = [     247]___fin =[0]___boundary = [0]
+[a]node[107] = [     143]___fin =[0]___boundary = [0]
+[a]node[108] = [      88]___fin =[0]___boundary = [0]
+[a]node[109] = [     197]___fin =[0]___boundary = [0]
+[a]node[110] = [      74]___fin =[0]___boundary = [0]
+[a]node[111] = [     214]___fin =[0]___boundary = [0]
+[a]node[112] = [     112]___fin =[0]___boundary = [0]
+[a]node[113] = [     234]___fin =[0]___boundary = [0]
+[a]node[114] = [     144]___fin =[0]___boundary = [0]
+[a]node[115] = [     203]___fin =[0]___boundary = [0]
+[a]node[116] = [     120]___fin =[0]___boundary = [0]
+[a]node[117] = [     176]___fin =[0]___boundary = [0]
+[a]node[118] = [     136]___fin =[0]___boundary = [0]
+[a]node[119] = [     235]___fin =[0]___boundary = [0]
+[a]node[120] = [     226]___fin =[0]___boundary = [0]
+[a]node[121] = [      24]___fin =[0]___boundary = [0]
+[a]node[122] = [     116]___fin =[0]___boundary = [0]
+[a]node[123] = [     232]___fin =[0]___boundary = [0]
+[a]node[124] = [     175]___fin =[0]___boundary = [0]
+[a]node[125] = [     191]___fin =[0]___boundary = [0]
+[a]node[126] = [      32]___fin =[0]___boundary = [0]
+[a]node[127] = [     128]___fin =[0]___boundary = [0]
+[a]node[128] = [     218]___fin =[0]___boundary = [0]
+[a]node[129] = [     140]___fin =[0]___boundary = [0]
+[a]node[130] = [     124]___fin =[0]___boundary = [0]
+[a]node[131] = [     147]___fin =[0]___boundary = [0]
+[a]node[132] = [      16]___fin =[0]___boundary = [0]
+[a]node[133] = [     159]___fin =[0]___boundary = [0]
+[a]node[134] = [     103]___fin =[0]___boundary = [0]
+[a]node[135] = [     125]___fin =[0]___boundary = [0]
+[a]node[136] = [      68]___fin =[0]___boundary = [0]
+[a]node[137] = [      81]___fin =[0]___boundary = [0]
+[a]node[138] = [      28]___fin =[0]___boundary = [0]
+[a]node[139] = [     139]___fin =[0]___boundary = [0]
+[a]node[140] = [     243]___fin =[0]___boundary = [0]
+[a]node[141] = [     149]___fin =[0]___boundary = [0]
+[a]node[142] = [     161]___fin =[0]___boundary = [0]
+[a]node[143] = [     215]___fin =[0]___boundary = [0]
+[a]node[144] = [      61]___fin =[0]___boundary = [0]
+[a]node[145] = [     166]___fin =[0]___boundary = [0]
+[a]node[146] = [     157]___fin =[0]___boundary = [0]
+[a]node[147] = [     209]___fin =[0]___boundary = [0]
+[a]node[148] = [      53]___fin =[0]___boundary = [0]
+[a]node[149] = [     245]___fin =[0]___boundary = [0]
+[a]node[150] = [     101]___fin =[0]___boundary = [0]
+[a]node[151] = [     190]___fin =[0]___boundary = [0]
+[a]node[152] = [      42]___fin =[0]___boundary = [0]
+[a]node[153] = [     106]___fin =[0]___boundary = [0]
+[a]node[154] = [      25]___fin =[0]___boundary = [0]
+[a]node[155] = [       2]___fin =[0]___boundary = [0]
+[a]node[156] = [      44]___fin =[0]___boundary = [0]
+[a]node[157] = [      48]___fin =[0]___boundary = [0]
+[a]node[158] = [      99]___fin =[0]___boundary = [0]
+[a]node[159] = [      12]___fin =[0]___boundary = [0]
+[a]node[160] = [     184]___fin =[0]___boundary = [0]
+[a]node[161] = [      36]___fin =[0]___boundary = [0]
+[a]node[162] = [      71]___fin =[0]___boundary = [0]
+[a]node[163] = [     187]___fin =[0]___boundary = [0]
+[a]node[164] = [     102]___fin =[0]___boundary = [0]
+[a]node[165] = [      45]___fin =[0]___boundary = [0]
+[a]node[166] = [      31]___fin =[0]___boundary = [0]
+[a]node[167] = [     131]___fin =[0]___boundary = [0]
+[a]node[168] = [      76]___fin =[0]___boundary = [0]
+[a]node[169] = [     132]___fin =[0]___boundary = [0]
+[a]node[170] = [      93]___fin =[0]___boundary = [0]
+[a]node[171] = [     121]___fin =[0]___boundary = [0]
+[a]node[172] = [      59]___fin =[0]___boundary = [0]
+[a]node[173] = [      96]___fin =[0]___boundary = [0]
+[a]node[174] = [      75]___fin =[0]___boundary = [0]
+[a]node[175] = [     182]___fin =[0]___boundary = [0]
+[a]node[176] = [     127]___fin =[0]___boundary = [0]
+[a]node[177] = [      55]___fin =[0]___boundary = [0]
+[a]node[178] = [      21]___fin =[0]___boundary = [0]
+[a]node[179] = [       1]___fin =[0]___boundary = [0]
+[a]node[180] = [      38]___fin =[0]___boundary = [0]
+[a]node[181] = [     205]___fin =[0]___boundary = [0]
+[a]node[182] = [     192]___fin =[0]___boundary = [0]
+[a]node[183] = [     208]___fin =[0]___boundary = [0]
+[a]node[184] = [      30]___fin =[0]___boundary = [0]
+[a]node[185] = [     117]___fin =[0]___boundary = [0]
+[a]node[186] = [      43]___fin =[0]___boundary = [0]
+[a]node[187] = [     168]___fin =[0]___boundary = [0]
+[a]node[188] = [     213]___fin =[0]___boundary = [0]
+[a]node[189] = [     130]___fin =[0]___boundary = [0]
+[a]node[190] = [     167]___fin =[0]___boundary = [0]
+[a]node[191] = [      79]___fin =[0]___boundary = [0]
+[a]node[192] = [     171]___fin =[0]___boundary = [0]
+[a]node[193] = [      91]___fin =[0]___boundary = [0]
+[a]node[194] = [      34]___fin =[0]___boundary = [0]
+[a]node[195] = [      78]___fin =[0]___boundary = [0]
+[a]node[196] = [      22]___fin =[0]___boundary = [0]
+[a]node[197] = [       5]___fin =[0]___boundary = [0]
+[a]node[198] = [     115]___fin =[0]___boundary = [0]
+[a]node[199] = [     188]___fin =[0]___boundary = [0]
+[a]node[200] = [      13]___fin =[0]___boundary = [0]
+[a]node[201] = [      57]___fin =[0]___boundary = [0]
+[a]node[202] = [     108]___fin =[0]___boundary = [0]
+[a]node[203] = [     210]___fin =[0]___boundary = [0]
+[a]node[204] = [     154]___fin =[0]___boundary = [0]
+[a]node[205] = [      29]___fin =[0]___boundary = [0]
+[a]node[206] = [     153]___fin =[0]___boundary = [0]
+[a]node[207] = [     126]___fin =[0]___boundary = [0]
+[a]node[208] = [     163]___fin =[0]___boundary = [0]
+[a]node[209] = [     160]___fin =[0]___boundary = [0]
+[a]node[210] = [      11]___fin =[0]___boundary = [0]
+[a]node[211] = [     137]___fin =[0]___boundary = [0]
+[a]node[212] = [      58]___fin =[0]___boundary = [0]
+[a]node[213] = [     151]___fin =[0]___boundary = [0]
+[a]node[214] = [     113]___fin =[0]___boundary = [0]
+[a]node[215] = [      47]___fin =[0]___boundary = [0]
+[a]node[216] = [     186]___fin =[0]___boundary = [0]
+[a]node[217] = [      87]___fin =[0]___boundary = [0]
+[a]node[218] = [     146]___fin =[0]___boundary = [0]
+[a]node[219] = [     230]___fin =[0]___boundary = [0]
+[a]node[220] = [      19]___fin =[0]___boundary = [0]
+[a]node[221] = [     110]___fin =[0]___boundary = [0]
+[a]node[222] = [     178]___fin =[0]___boundary = [0]
+[a]node[223] = [       9]___fin =[0]___boundary = [0]
+[a]node[224] = [     248]___fin =[0]___boundary = [0]
+[a]node[225] = [      40]___fin =[0]___boundary = [0]
+[a]node[226] = [      64]___fin =[0]___boundary = [0]
+[a]node[227] = [     237]___fin =[0]___boundary = [0]
+[a]node[228] = [      56]___fin =[0]___boundary = [0]
+[a]node[229] = [     217]___fin =[0]___boundary = [0]
+[a]node[230] = [     170]___fin =[0]___boundary = [0]
+[a]node[231] = [       6]___fin =[0]___boundary = [0]
+[a]node[232] = [     196]___fin =[0]___boundary = [0]
+[a]node[233] = [     142]___fin =[0]___boundary = [0]
+[a]node[234] = [     233]___fin =[0]___boundary = [0]
+[a]node[235] = [     118]___fin =[0]___boundary = [0]
+[a]node[236] = [      80]___fin =[0]___boundary = [0]
+[a]node[237] = [      49]___fin =[0]___boundary = [0]
+[a]node[238] = [     158]___fin =[0]___boundary = [0]
+[a]node[239] = [       3]___fin =[0]___boundary = [0]
+[a]node[240] = [     162]___fin =[0]___boundary = [0]
+[a]node[241] = [     227]___fin =[0]___boundary = [0]
+[a]node[242] = [     181]___fin =[0]___boundary = [0]
+[a]node[243] = [      83]___fin =[0]___boundary = [0]
+[a]node[244] = [     199]___fin =[0]___boundary = [0]
+[a]node[245] = [      95]___fin =[0]___boundary = [0]
+[a]node[246] = [     201]___fin =[0]___boundary = [0]
+[a]node[247] = [     250]___fin =[0]___boundary = [0]
+[a]node[248] = [     198]___fin =[0]___boundary = [0]
+[a]node[249] = [      23]___fin =[0]___boundary = [0]
+[a]node[250] = [     100]___fin =[0]___boundary = [0]
+
+=========print fin=========
+=========print start=========
+
+[b]node[  1] = [     -31]___fin =[0]___boundary = [0]
+[b]node[  2] = [     -72]___fin =[0]___boundary = [0]
+[b]node[  3] = [     -42]___fin =[0]___boundary = [0]
+[b]node[  4] = [    -189]___fin =[0]___boundary = [0]
+[b]node[  5] = [    -194]___fin =[0]___boundary = [0]
+[b]node[  6] = [     -68]___fin =[0]___boundary = [0]
+[b]node[  7] = [    -246]___fin =[0]___boundary = [0]
+[b]node[  8] = [    -199]___fin =[0]___boundary = [0]
+[b]node[  9] = [    -229]___fin =[0]___boundary = [0]
+[b]node[ 10] = [    -200]___fin =[0]___boundary = [0]
+[b]node[ 11] = [    -131]___fin =[0]___boundary = [0]
+[b]node[ 12] = [    -133]___fin =[0]___boundary = [0]
+[b]node[ 13] = [    -208]___fin =[0]___boundary = [0]
+[b]node[ 14] = [    -195]___fin =[0]___boundary = [0]
+[b]node[ 15] = [    -203]___fin =[0]___boundary = [0]
+[b]node[ 16] = [     -70]___fin =[0]___boundary = [0]
+[b]node[ 17] = [     -74]___fin =[0]___boundary = [0]
+[b]node[ 18] = [    -213]___fin =[0]___boundary = [0]
+[b]node[ 19] = [    -122]___fin =[0]___boundary = [0]
+[b]node[ 20] = [    -110]___fin =[0]___boundary = [0]
+[b]node[ 21] = [     -48]___fin =[0]___boundary = [0]
+[b]node[ 22] = [    -236]___fin =[0]___boundary = [0]
+[b]node[ 23] = [     -61]___fin =[0]___boundary = [0]
+[b]node[ 24] = [     -50]___fin =[0]___boundary = [0]
+[b]node[ 25] = [     -87]___fin =[0]___boundary = [0]
+[b]node[ 26] = [    -196]___fin =[0]___boundary = [0]
+[b]node[ 27] = [     -15]___fin =[0]___boundary = [0]
+[b]node[ 28] = [    -185]___fin =[0]___boundary = [0]
+[b]node[ 29] = [     -95]___fin =[0]___boundary = [0]
+[b]node[ 30] = [    -146]___fin =[0]___boundary = [0]
+[b]node[ 31] = [    -121]___fin =[0]___boundary = [0]
+[b]node[ 32] = [    -166]___fin =[0]___boundary = [0]
+[b]node[ 33] = [     -58]___fin =[0]___boundary = [0]
+[b]node[ 34] = [     -21]___fin =[0]___boundary = [0]
+[b]node[ 35] = [     -83]___fin =[0]___boundary = [0]
+[b]node[ 36] = [     -77]___fin =[0]___boundary = [0]
+[b]node[ 37] = [      -3]___fin =[0]___boundary = [0]
+[b]node[ 38] = [      -1]___fin =[0]___boundary = [0]
+[b]node[ 39] = [      -5]___fin =[0]___boundary = [0]
+[b]node[ 40] = [     -56]___fin =[0]___boundary = [0]
+[b]node[ 41] = [    -205]___fin =[0]___boundary = [0]
+[b]node[ 42] = [     -88]___fin =[0]___boundary = [0]
+[b]node[ 43] = [    -154]___fin =[0]___boundary = [0]
+[b]node[ 44] = [    -170]___fin =[0]___boundary = [0]
+[b]node[ 45] = [    -103]___fin =[0]___boundary = [0]
+[b]node[ 46] = [    -223]___fin =[0]___boundary = [0]
+[b]node[ 47] = [    -183]___fin =[0]___boundary = [0]
+[b]node[ 48] = [    -180]___fin =[0]___boundary = [0]
+[b]node[ 49] = [    -198]___fin =[0]___boundary = [0]
+[b]node[ 50] = [    -240]___fin =[0]___boundary = [0]
+[b]node[ 51] = [    -143]___fin =[0]___boundary = [0]
+[b]node[ 52] = [     -47]___fin =[0]___boundary = [0]
+[b]node[ 53] = [    -224]___fin =[0]___boundary = [0]
+[b]node[ 54] = [     -49]___fin =[0]___boundary = [0]
+[b]node[ 55] = [    -115]___fin =[0]___boundary = [0]
+[b]node[ 56] = [    -123]___fin =[0]___boundary = [0]
+[b]node[ 57] = [    -135]___fin =[0]___boundary = [0]
+[b]node[ 58] = [     -81]___fin =[0]___boundary = [0]
+[b]node[ 59] = [    -138]___fin =[0]___boundary = [0]
+[b]node[ 60] = [    -226]___fin =[0]___boundary = [0]
+[b]node[ 61] = [    -243]___fin =[0]___boundary = [0]
+[b]node[ 62] = [    -206]___fin =[0]___boundary = [0]
+[b]node[ 63] = [     -30]___fin =[0]___boundary = [0]
+[b]node[ 64] = [    -249]___fin =[0]___boundary = [0]
+[b]node[ 65] = [     -51]___fin =[0]___boundary = [0]
+[b]node[ 66] = [    -163]___fin =[0]___boundary = [0]
+[b]node[ 67] = [    -153]___fin =[0]___boundary = [0]
+[b]node[ 68] = [    -132]___fin =[0]___boundary = [0]
+[b]node[ 69] = [    -161]___fin =[0]___boundary = [0]
+[b]node[ 70] = [    -171]___fin =[0]___boundary = [0]
+[b]node[ 71] = [     -22]___fin =[0]___boundary = [0]
+[b]node[ 72] = [    -212]___fin =[0]___boundary = [0]
+[b]node[ 73] = [    -144]___fin =[0]___boundary = [0]
+[b]node[ 74] = [     -78]___fin =[0]___boundary = [0]
+[b]node[ 75] = [    -119]___fin =[0]___boundary = [0]
+[b]node[ 76] = [     -76]___fin =[0]___boundary = [0]
+[b]node[ 77] = [    -159]___fin =[0]___boundary = [0]
+[b]node[ 78] = [    -233]___fin =[0]___boundary = [0]
+[b]node[ 79] = [     -26]___fin =[0]___boundary = [0]
+[b]node[ 80] = [    -105]___fin =[0]___boundary = [0]
+[b]node[ 81] = [     -90]___fin =[0]___boundary = [0]
+[b]node[ 82] = [    -158]___fin =[0]___boundary = [0]
+[b]node[ 83] = [     -94]___fin =[0]___boundary = [0]
+[b]node[ 84] = [     -20]___fin =[0]___boundary = [0]
+[b]node[ 85] = [     -19]___fin =[0]___boundary = [0]
+[b]node[ 86] = [    -181]___fin =[0]___boundary = [0]
+[b]node[ 87] = [     -91]___fin =[0]___boundary = [0]
+[b]node[ 88] = [    -117]___fin =[0]___boundary = [0]
+[b]node[ 89] = [     -79]___fin =[0]___boundary = [0]
+[b]node[ 90] = [    -232]___fin =[0]___boundary = [0]
+[b]node[ 91] = [    -207]___fin =[0]___boundary = [0]
+[b]node[ 92] = [    -188]___fin =[0]___boundary = [0]
+[b]node[ 93] = [     -32]___fin =[0]___boundary = [0]
+[b]node[ 94] = [     -54]___fin =[0]___boundary = [0]
+[b]node[ 95] = [    -216]___fin =[0]___boundary = [0]
+[b]node[ 96] = [    -184]___fin =[0]___boundary = [0]
+[b]node[ 97] = [     -28]___fin =[0]___boundary = [0]
+[b]node[ 98] = [    -197]___fin =[0]___boundary = [0]
+[b]node[ 99] = [    -162]___fin =[0]___boundary = [0]
+[b]node[100] = [    -241]___fin =[0]___boundary = [0]
+[b]node[101] = [    -108]___fin =[0]___boundary = [0]
+[b]node[102] = [    -100]___fin =[0]___boundary = [0]
+[b]node[103] = [    -160]___fin =[0]___boundary = [0]
+[b]node[104] = [    -248]___fin =[0]___boundary = [0]
+[b]node[105] = [     -27]___fin =[0]___boundary = [0]
+[b]node[106] = [     -24]___fin =[0]___boundary = [0]
+[b]node[107] = [    -230]___fin =[0]___boundary = [0]
+[b]node[108] = [     -37]___fin =[0]___boundary = [0]
+[b]node[109] = [     -98]___fin =[0]___boundary = [0]
+[b]node[110] = [    -215]___fin =[0]___boundary = [0]
+[b]node[111] = [    -225]___fin =[0]___boundary = [0]
+[b]node[112] = [    -134]___fin =[0]___boundary = [0]
+[b]node[113] = [    -204]___fin =[0]___boundary = [0]
+[b]node[114] = [     -53]___fin =[0]___boundary = [0]
+[b]node[115] = [     -71]___fin =[0]___boundary = [0]
+[b]node[116] = [     -99]___fin =[0]___boundary = [0]
+[b]node[117] = [     -66]___fin =[0]___boundary = [0]
+[b]node[118] = [    -175]___fin =[0]___boundary = [0]
+[b]node[119] = [     -84]___fin =[0]___boundary = [0]
+[b]node[120] = [    -125]___fin =[0]___boundary = [0]
+[b]node[121] = [    -219]___fin =[0]___boundary = [0]
+[b]node[122] = [    -178]___fin =[0]___boundary = [0]
+[b]node[123] = [    -222]___fin =[0]___boundary = [0]
+[b]node[124] = [     -23]___fin =[0]___boundary = [0]
+[b]node[125] = [     -33]___fin =[0]___boundary = [0]
+[b]node[126] = [    -112]___fin =[0]___boundary = [0]
+[b]node[127] = [     -10]___fin =[0]___boundary = [0]
+[b]node[128] = [    -156]___fin =[0]___boundary = [0]
+[b]node[129] = [    -238]___fin =[0]___boundary = [0]
+[b]node[130] = [    -149]___fin =[0]___boundary = [0]
+[b]node[131] = [     -75]___fin =[0]___boundary = [0]
+[b]node[132] = [    -227]___fin =[0]___boundary = [0]
+[b]node[133] = [     -69]___fin =[0]___boundary = [0]
+[b]node[134] = [     -67]___fin =[0]___boundary = [0]
+[b]node[135] = [    -234]___fin =[0]___boundary = [0]
+[b]node[136] = [    -107]___fin =[0]___boundary = [0]
+[b]node[137] = [    -136]___fin =[0]___boundary = [0]
+[b]node[138] = [    -155]___fin =[0]___boundary = [0]
+[b]node[139] = [    -221]___fin =[0]___boundary = [0]
+[b]node[140] = [    -202]___fin =[0]___boundary = [0]
+[b]node[141] = [     -44]___fin =[0]___boundary = [0]
+[b]node[142] = [     -82]___fin =[0]___boundary = [0]
+[b]node[143] = [    -124]___fin =[0]___boundary = [0]
+[b]node[144] = [    -242]___fin =[0]___boundary = [0]
+[b]node[145] = [     -36]___fin =[0]___boundary = [0]
+[b]node[146] = [    -220]___fin =[0]___boundary = [0]
+[b]node[147] = [     -35]___fin =[0]___boundary = [0]
+[b]node[148] = [      -2]___fin =[0]___boundary = [0]
+[b]node[149] = [     -17]___fin =[0]___boundary = [0]
+[b]node[150] = [    -120]___fin =[0]___boundary = [0]
+[b]node[151] = [    -104]___fin =[0]___boundary = [0]
+[b]node[152] = [    -247]___fin =[0]___boundary = [0]
+[b]node[153] = [     -65]___fin =[0]___boundary = [0]
+[b]node[154] = [     -45]___fin =[0]___boundary = [0]
+[b]node[155] = [    -190]___fin =[0]___boundary = [0]
+[b]node[156] = [     -16]___fin =[0]___boundary = [0]
+[b]node[157] = [     -80]___fin =[0]___boundary = [0]
+[b]node[158] = [    -142]___fin =[0]___boundary = [0]
+[b]node[159] = [    -114]___fin =[0]___boundary = [0]
+[b]node[160] = [     -96]___fin =[0]___boundary = [0]
+[b]node[161] = [     -85]___fin =[0]___boundary = [0]
+[b]node[162] = [     -52]___fin =[0]___boundary = [0]
+[b]node[163] = [    -244]___fin =[0]___boundary = [0]
+[b]node[164] = [    -137]___fin =[0]___boundary = [0]
+[b]node[165] = [      -7]___fin =[0]___boundary = [0]
+[b]node[166] = [    -239]___fin =[0]___boundary = [0]
+[b]node[167] = [    -176]___fin =[0]___boundary = [0]
+[b]node[168] = [    -127]___fin =[0]___boundary = [0]
+[b]node[169] = [    -141]___fin =[0]___boundary = [0]
+[b]node[170] = [    -167]___fin =[0]___boundary = [0]
+[b]node[171] = [    -169]___fin =[0]___boundary = [0]
+[b]node[172] = [     -89]___fin =[0]___boundary = [0]
+[b]node[173] = [    -118]___fin =[0]___boundary = [0]
+[b]node[174] = [    -140]___fin =[0]___boundary = [0]
+[b]node[175] = [     -43]___fin =[0]___boundary = [0]
+[b]node[176] = [    -237]___fin =[0]___boundary = [0]
+[b]node[177] = [    -150]___fin =[0]___boundary = [0]
+[b]node[178] = [    -173]___fin =[0]___boundary = [0]
+[b]node[179] = [    -109]___fin =[0]___boundary = [0]
+[b]node[180] = [     -60]___fin =[0]___boundary = [0]
+[b]node[181] = [    -102]___fin =[0]___boundary = [0]
+[b]node[182] = [    -211]___fin =[0]___boundary = [0]
+[b]node[183] = [    -191]___fin =[0]___boundary = [0]
+[b]node[184] = [    -214]___fin =[0]___boundary = [0]
+[b]node[185] = [    -111]___fin =[0]___boundary = [0]
+[b]node[186] = [    -179]___fin =[0]___boundary = [0]
+[b]node[187] = [    -129]___fin =[0]___boundary = [0]
+[b]node[188] = [    -177]___fin =[0]___boundary = [0]
+[b]node[189] = [      -6]___fin =[0]___boundary = [0]
+[b]node[190] = [     -55]___fin =[0]___boundary = [0]
+[b]node[191] = [     -41]___fin =[0]___boundary = [0]
+[b]node[192] = [      -4]___fin =[0]___boundary = [0]
+[b]node[193] = [    -128]___fin =[0]___boundary = [0]
+[b]node[194] = [      -9]___fin =[0]___boundary = [0]
+[b]node[195] = [    -193]___fin =[0]___boundary = [0]
+[b]node[196] = [    -182]___fin =[0]___boundary = [0]
+[b]node[197] = [     -63]___fin =[0]___boundary = [0]
+[b]node[198] = [     -64]___fin =[0]___boundary = [0]
+[b]node[199] = [    -157]___fin =[0]___boundary = [0]
+[b]node[200] = [       0]___fin =[0]___boundary = [0]
+[b]node[201] = [    -130]___fin =[0]___boundary = [0]
+[b]node[202] = [    -231]___fin =[0]___boundary = [0]
+[b]node[203] = [    -126]___fin =[0]___boundary = [0]
+[b]node[204] = [    -10pa
+pa
+rb
+rb
+rb
+rb
+rb
+rb
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+rb
+rb
+pa
+rb
+rb
+rb
+rb
+pa
+rb
+rb
+rb
+pa
+pa
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+pa
+pa
+pa
+pa
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+pa
+pa
+pa
+rb
+rb
+pa
+pa
+rb
+pa
+pa
+rb
+rb
+rb
+pa
+rb
+pa
+pa
+pa
+pa
+pa
+rb
+pa
+pa
+pa
+rb
+pa
+rb
+rb
+rb
+pa
+pa
+rb
+pa
+pa
+rb
+pa
+rb
+pa
+pa
+rb
+rb
+pa
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+pa
+pa
+rb
+pa
+pa
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+pa
+pa
+pa
+rb
+pa
+pa
+pa

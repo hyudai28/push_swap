@@ -1,7 +1,7 @@
 NAME := push_swap
 
 CC := gcc
-CFLAGS := -Wall -Werror -Wextra
+CFLAGS := -Wall -Wextra -Werror
 SOURCE_DIR = src
 MINILIB_DIR = mini_libft
 OBJDIR = obj
@@ -19,10 +19,10 @@ OBJS := ${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJS) 
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 .c.o:
-		$(CC) $(CFLAG) -c $< -o $@
+		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 		rm -f $(OBJS)

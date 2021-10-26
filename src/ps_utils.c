@@ -20,7 +20,6 @@ void	arg_error(long num, char *argv)
 void ps_error_check(int argc, char **argv)
 {
 	long	num_tmp;
-	int		ary[argc - 1];
 	int		arg_i;
 
 	if (argc < 2)
@@ -31,7 +30,6 @@ void ps_error_check(int argc, char **argv)
 	{
 		num_tmp = ft_atoi(argv[arg_i]);
 		arg_error(num_tmp, argv[arg_i]);
-		ary[arg_i - 1] = num_tmp;
 		arg_i++;
 	}
 }

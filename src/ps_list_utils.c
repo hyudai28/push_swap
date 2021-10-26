@@ -56,7 +56,7 @@ t_stack	*make_list(int argc, char **argv)
 }
 
 
-void	print_node(t_stack *node, int node_num, int argc)
+void	print_node(t_stack *node, int node_num)
 {
 	int node_index;
 	char stack_type;

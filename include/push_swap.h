@@ -57,7 +57,7 @@ int	pb(t_stack *a, t_stack *b);
 void	stack_next(t_stack *move);
 t_stack	*stack_setup(void);
 t_stack	*make_list(int argc, char **argv);
-void	print_node(t_stack *node, int node_num, int argc);
+void	print_node(t_stack *node, int node_num);
 void	restore_node_ptr(t_stack *node);
 int	get_node_count(t_stack *node);
 

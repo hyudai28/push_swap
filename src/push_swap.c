@@ -55,6 +55,7 @@ void	ps_b_qsort(t_stack *a, t_stack *b)
 	node_index = 0;
 	node_size = get_node_count(b);
 	median = get_median(b, node_size);
+	printf("median=[%d]\n", median);
 	while (node_index < node_size)
 	{
 		if (b->next->num > median)
@@ -71,7 +72,6 @@ void	ps_b_qsort(t_stack *a, t_stack *b)
 		b = b->next;
 		node_index++;
 	}
-
 	restore_node_ptr(b);
 }
 
@@ -123,7 +123,6 @@ void	ft_qsort(int *ary, int left, int right)
 	i = left;
 	j = right;
 	pivot = ary[(left + right) / 2];
-
 	while (1)
 	{
 		while (ary[i] < pivot)
@@ -178,18 +177,15 @@ int	count_stack_size(t_stack *stack)
 	return (count_size);
 }
 
-int	b_quick_sort(t_stack *a, t_stack *b, int size)
+int	b_quick_sort(t_stack *a, t_stack *b)
 {
-	int	ary[size];
-	int	half_num;
 	int	back_i;
-	int	order;
 
-	order = 0;
 	back_i = 0;
-
 	while (get_node_count(b) > SORTSIZE)
 	{
+		print_node(a, 1);
+		print_node(b, 0);
 		ps_b_qsort(a, b);
 		back_i++;
 	}
@@ -198,7 +194,6 @@ int	b_quick_sort(t_stack *a, t_stack *b, int size)
 
 int	allsort(t_stack *a, t_stack *b)
 {
-	int		order;
 	int		b2a_i;
 	int		b_index;
 	bool	flag;
@@ -283,21 +278,26 @@ int	half_a_to_b(t_stack *a, t_stack *b, int num_size, int sort_fin)
 	return (1);
 }
 
-int	do_swap_over_6(t_stack *a, t_stack *b, int order, int num_size)
+int	do_swap_over_6(t_stack *a, t_stack *b, int num_size)
 {
-	int		size;
 	int		sort_fin;
 
-	int exit_index = 0;
 	sort_fin = 0;
 	while (half_a_to_b(a, b, num_size, sort_fin))
 	{
-		b_quick_sort(a, b, num_size);
+		print_node(a, 1);
+		print_node(b, 0);
+		puts("b_quick_sort");
+		b_quick_sort(a, b);
+		print_node(a, 1);
+		print_node(b, 0);
+		puts("all_sort");
 		sort_fin = allsort(a, b);
+		//print_node(a, 1);
+		//print_node(b, 0);
 	}
 	return (0);
 }
-
 
 void	show_data(int *ary, int size)
 {
@@ -312,9 +312,9 @@ void	show_data(int *ary, int size)
 
 void	print_check(t_stack *a, t_stack *b)
 {
-	print_node(b, 1, 0);
-	print_node(a, 1, 0);
-	print_node(b, 0, 0);
+	print_node(b, 1);
+	print_node(a, 1);
+	print_node(b, 0);
 	exit (1);
 }
 
@@ -332,7 +332,7 @@ void	sorted_check(int *ary, int argc)
 	exit (1);
 }
 
-int	do_swap_over_5(t_stack *a, t_stack *b, int num_size)
+int	do_swap_over_5(t_stack *a, t_stack *b)
 {
 	int	median;
 	int	i;
@@ -359,54 +359,44 @@ int	do_swap_over_5(t_stack *a, t_stack *b, int num_size)
 	ra(a, 1);
 	pa(a, b);
 	ra(a, 1);
+	return (0);
 }
 
-void	ary_check(t_stack *a, int num_size, int *ary)
+void	ary_check(t_stack *a, int num_size)
 {
 	int	i;
+	int ary[num_size];
 
 	node_to_ary(a, num_size, ary);
 	sorted_check(ary, num_size);
-	ft_qsort(ary, 0, num_size);
+	ft_qsort(ary, 0, num_size - 1);
 	i = 0;
 	while (i + 1 < num_size)
 	{
-		printf("ary[%d]=[%d]\n", i, ary[i]);
 		if (ary[i] == ary[i + 1])
-		{
-			puts("\n");
-			printf("ary[%d] = [%d]\n", i, ary[i]);
-			printf("ary[%d] = [%d]\n", i + 1, ary[i + 1]);
-			puts("\n");
-			//error_exit();
-		}
+			error_exit();
 		i++;
 	}
-	exit (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack *a_stack;
 	t_stack *b_stack;
-	int		order;
-	int ary[argc - 1];
 
 	ps_error_check(argc, argv);
 	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
-	ary_check(a_stack, argc - 1, ary);
-
-	order = 0;
+	ary_check(a_stack, argc - 1);
 	if (argc <= 3)
-		order = do_swap_2(a_stack, LIST_A);
+		do_swap_2(a_stack, LIST_A);
 	else if (argc == 4)
-		order = swap_3(a_stack, LIST_A);
+		swap_3(a_stack, LIST_A);
 	else if (argc <= 6)
-		order = do_swap_over_5(a_stack, b_stack, argc - 1);
+		do_swap_over_5(a_stack, b_stack);
 	else
-		order = do_swap_over_6(a_stack, b_stack, order, argc - 1);
-	// print_node(a_stack, 1, argc);
-	// print_node(b_stack, 0, argc);
+		do_swap_over_6(a_stack, b_stack, argc - 1);
+	// print_node(a_stack, 1);
+	// print_node(b_stack, 0);
 	// system("leaks a.out");
 }
