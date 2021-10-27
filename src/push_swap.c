@@ -9,10 +9,7 @@ int	node_count(t_stack *node)
 	int	ret;
 
 	if (!node->next)
-	{
-		printf("error !! node繋がってなくね？\n");
-		exit(1);
-	}
+		return (0);
 	node = node->next;
 	ret = 0;
 	while (!node->head && !node->fin)
@@ -55,7 +52,6 @@ void	ps_b_qsort(t_stack *a, t_stack *b)
 	node_index = 0;
 	node_size = get_node_count(b);
 	median = get_median(b, node_size);
-	printf("median=[%d]\n", median);
 	while (node_index < node_size)
 	{
 		if (b->next->num > median)
@@ -68,8 +64,9 @@ void	ps_b_qsort(t_stack *a, t_stack *b)
 			pa(a, b);
 		}
 		else
+		{
 			rb(b, 1);
-		b = b->next;
+		}
 		node_index++;
 	}
 	restore_node_ptr(b);
@@ -113,7 +110,6 @@ void	qsort_swap_number(int *ary, int i, int j)
 	ary[j] = temp;
 }
 
-
 void	ft_qsort(int *ary, int left, int right)
 {
 	int	i;
@@ -146,13 +142,14 @@ int	unsorted_num(t_stack *node)
 	int	unsorted;
 
 	unsorted = 0;
+	if (!node->next)
+		return (0);
 	node = node->next;
 	while (!node->fin && !node->head)
 	{
 		node = node->next;
 		unsorted++;
 	}
-	restore_node_ptr(node);
 	return (unsorted);
 }
 
@@ -184,8 +181,6 @@ int	b_quick_sort(t_stack *a, t_stack *b)
 	back_i = 0;
 	while (get_node_count(b) > SORTSIZE)
 	{
-		print_node(a, 1);
-		print_node(b, 0);
 		ps_b_qsort(a, b);
 		back_i++;
 	}
@@ -200,6 +195,7 @@ int	allsort(t_stack *a, t_stack *b)
 
 	b2a_i = get_node_count(b);
 	b_index = get_node_count(b);
+	flag = 0;
 	if (get_node_count(b) == 4)
 	{
 		pa(a, b);
@@ -209,7 +205,7 @@ int	allsort(t_stack *a, t_stack *b)
 		do_swap_2(b, LIST_B);
 	else
 		swap_3(b, LIST_B);
-	while (b2a_i > 0)
+	while (b2a_i > 0 && !b->next->head)
 	{
 		if (flag)
 		{
@@ -227,6 +223,8 @@ int	allsort(t_stack *a, t_stack *b)
 		a->prev->fin = 1;
 		b2a_i--;
 	}
+	if (flag)
+		ra(a, 1);
 	return (0);
 }
 
@@ -239,6 +237,22 @@ int	get_median(t_stack *a, int size)
 	ft_qsort(num_ary, 0, size - 1);
 	median_num = num_ary[size / 2];
 	return (median_num);
+}
+
+int	opt_is_nextfin(t_stack *a, int not_first)
+{
+	if (a->next->fin || not_first)
+		return (1);
+	return (0);
+}
+
+void	opt_is_notfirst(t_stack *a, int ra_index)
+{
+	if (a->next->fin)
+	{
+		while (ra_index-- > 0)
+			rra(a, 1);
+	}
 }
 
 int	half_a_to_b(t_stack *a, t_stack *b, int num_size, int sort_fin)
@@ -255,8 +269,9 @@ int	half_a_to_b(t_stack *a, t_stack *b, int num_size, int sort_fin)
 		return (0);
 	else if (unsorted <= SORTSIZE)
 		return (all_to_b(a, b));
+	unsorted = 0;
 	median_num = get_median(a, node_count(a));
-	while (!a->next->fin && list_index <= num_size)
+	while (!a->next->fin && node_count(b) < num_size / 2)
 	{
 		if (a->next->boundary == 1 || a->next->fin == 1)
 			break;
@@ -273,8 +288,7 @@ int	half_a_to_b(t_stack *a, t_stack *b, int num_size, int sort_fin)
 	}
 	if (a->next->boundary)
 		pb(a, b);
-	while (ra_index-- > 0)
-		rra(a, 1);
+	opt_is_notfirst(a, ra_index);
 	return (1);
 }
 
@@ -285,13 +299,14 @@ int	do_swap_over_6(t_stack *a, t_stack *b, int num_size)
 	sort_fin = 0;
 	while (half_a_to_b(a, b, num_size, sort_fin))
 	{
-		print_node(a, 1);
-		print_node(b, 0);
-		puts("b_quick_sort");
+		//print_node(a, 1);
+		//print_node(b, 0);
+		//puts("b_quick_sort");
 		b_quick_sort(a, b);
-		print_node(a, 1);
-		print_node(b, 0);
-		puts("all_sort");
+		//puts("quick fin");
+		//print_node(a, 1);
+		//print_node(b, 0);
+		//puts("all_sort");
 		sort_fin = allsort(a, b);
 		//print_node(a, 1);
 		//print_node(b, 0);

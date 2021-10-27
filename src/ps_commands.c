@@ -74,7 +74,6 @@ int	rb(t_stack *b, int print)
 	t_stack	*fst2last;
 	t_stack	*lst2sec;
 
-	restore_node_ptr(b);
 	fst2last = b->next;
 	lst2sec = b->prev;
 	b->next->next->prev = b;
@@ -151,8 +150,6 @@ int	pa(t_stack *a, t_stack *b)
 {
 	t_stack	*bfst2afst;
 
-	restore_node_ptr(a);
-	restore_node_ptr(b);
 	if (!b->next)
 	{
 		write(1, "error\n", 6);

@@ -62,7 +62,7 @@ void	print_node(t_stack *node, int node_num)
 	char stack_type;
 
 	puts("=========print start=========\n");
-	if (node_num)
+	if (node_num == LIST_A)
 		stack_type = 'a';
 	else
 		stack_type = 'b';
@@ -81,8 +81,11 @@ void	print_node(t_stack *node, int node_num)
 
 void	restore_node_ptr(t_stack *node)
 {
-	while (!node->head)
-		node = node->next;
+	//while (!node->head)
+	//{
+	//	//printf("num =[%d]\n", node->num);
+	//	node = node->next;
+	//}
 }
 
 int		get_node_count(t_stack *node)

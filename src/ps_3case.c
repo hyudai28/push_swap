@@ -43,7 +43,7 @@ int	swap3_case4(t_stack *target, int list_flag)
 	else
 	{
 		sb(target);
-		ra(target, 1);
+		rb(target, 1);
 	}
 	return (2);
 }
