@@ -57,3 +57,20 @@ int	serch_min_num(t_stack *target)
 	}
 	return (num_index_ret);
 }
+
+void	ary_check(t_stack *a, int num_size)
+{
+	int	i;
+	int ary[num_size];
+
+	node_to_ary(a, num_size, ary);
+	sorted_check(ary, num_size);
+	ft_qsort(ary, 0, num_size - 1);
+	i = 0;
+	while (i + 1 < num_size)
+	{
+		if (ary[i] == ary[i + 1])
+			error_exit();
+		i++;
+	}
+}

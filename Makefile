@@ -1,17 +1,25 @@
 NAME := push_swap
 
 CC := gcc
-#CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror
 SOURCE_DIR = src
 MINILIB_DIR = mini_libft
 OBJDIR = obj
 
 SRCS := $(SOURCE_DIR)/push_swap.c
-SRCS += $(SOURCE_DIR)/ps_3case.c
-SRCS += $(SOURCE_DIR)/ps_commands.c
-SRCS += $(SOURCE_DIR)/ps_list_utils.c
-SRCS += $(SOURCE_DIR)/ps_utils.c
+SRCS += $(SOURCE_DIR)/ary_sort.c
+SRCS += $(SOURCE_DIR)/ft_atoi.c
 SRCS += $(SOURCE_DIR)/libft_utils.c
+SRCS += $(SOURCE_DIR)/ps_3case.c
+SRCS += $(SOURCE_DIR)/ps_6case.c
+SRCS += $(SOURCE_DIR)/ps_6_allsort.c
+SRCS += $(SOURCE_DIR)/ps_6case_utils.c
+SRCS += $(SOURCE_DIR)/ps_commands.c
+SRCS += $(SOURCE_DIR)/ps_commands_2.c
+SRCS += $(SOURCE_DIR)/ps_command_not_use.c
+SRCS += $(SOURCE_DIR)/ps_list_utils.c
+SRCS += $(SOURCE_DIR)/ps_make_list.c
+SRCS += $(SOURCE_DIR)/ps_utils.c
 
 OBJS := ${SRCS:.c=.o}
 
@@ -32,7 +40,7 @@ fclean: clean
 
 re: fclean all
 N = 100
-ARG := $(shell python3 -c 'import random; print(*random.sample([i for i in range(-999, 999)], $(N)))')
+ARG := $(shell python3 -c 'import random; print(*random.sample([i for i in range(-99999, 99999)], $(N)))')
 
 # # There may be duplicates.
 # ARG := $(shell python3 -c 'import random; print(*([random.randrange(-2147483648, 2147483647) for i in range($(N))]))')

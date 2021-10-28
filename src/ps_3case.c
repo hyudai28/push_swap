@@ -56,34 +56,3 @@ int	swap3_case5(t_stack *target, int list_flag)
 		rrb(target, 1);
 	return (1);
 }
-
-int	swap_3(t_stack *target, int list_flag)
-{
-	int	num1;
-	int	num2;
-	int	num3;
-
-	num1 = target->next->num;
-	num2 = target->next->next->num;
-	num3 = target->next->next->next->num;
-	if (num1 >= num2)
-	{
-		if (num2 <= num3)
-		{
-			if (num1 < num3)
-				swap3_case1(target,list_flag);
-			else if (num1 >= num3)
-				swap3_case3(target, list_flag);
-		}
-		else if (num2 > num3)
-			swap3_case2(target, list_flag);
-	}
-	else if (num2 >= num3)
-	{
-		if (num1 < num3)
-			swap3_case4(target, list_flag);
-		else if (num1 > num3)
-			swap3_case5(target, list_flag);
-	}
-	return (0);
-}

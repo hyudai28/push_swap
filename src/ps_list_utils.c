@@ -1,91 +1,17 @@
 #include "./../include/push_swap.h"
 
-
-void	stack_next(t_stack *move)
+int	count_stack_size(t_stack *stack)
 {
-	t_stack *src;
+	int	count_size;
 
-	src = move;
-	move = src->next;
-	move->prev = src;
-}
-
-t_stack	*stack_setup(void)
-{
-	t_stack	*b;
-
-	b = malloc(sizeof(t_stack));
-	b->head = 1;
-	b->next = NULL;
-	b->prev = NULL;
-	b->num = 0;
-	return (b);
-}
-
-
-t_stack	*make_list(int argc, char **argv)
-{
-	t_stack	*head;
-	t_stack	*now;
-	t_stack	*new;
-	int		struct_count;
-
-	head = malloc(sizeof(t_stack));
-	head->head = 1;
-	head->next = NULL;
-	head->prev = NULL;
-	head->num = 0;
-	head->boundary = 0;
-	head->fin = 0;
-	now = head;
-	struct_count = 0;
-	while (++struct_count < argc)
+	count_size = 0;
+	stack = stack->next;
+	while (!stack->head)
 	{
-		new = malloc(sizeof(t_stack));
-		new->prev = now;
-		new->next = head;
-		new->num = atoi(argv[struct_count]);
-		new->head = 0;
-		new->boundary = 0;
-		new->fin = 0;
-		now->next = new;
-		now = now->next;
+		count_size++;
+		stack = stack->next;
 	}
-	head->prev = now;
-	return (head);
-}
-
-
-void	print_node(t_stack *node, int node_num)
-{
-	int node_index;
-	char stack_type;
-
-	puts("=========print start=========\n");
-	if (node_num == LIST_A)
-		stack_type = 'a';
-	else
-		stack_type = 'b';
-	node_index = 1;
-	if (!node->next)
-		return ;
-	node = node->next;
-	while (!node->head)
-	{
-		printf("[%c]node[%3d] = [%8d]___fin =[%d]___boundary = [%d]\n", stack_type, node_index, node->num, node->fin, node->boundary);
-		node_index++;
-		node = node->next;
-	}
-	puts("\n=========print fin=========");
-}
-
-void	restore_node_ptr(t_stack *node)
-{
-	//while (!node->head)
-	//{
-	//	//printf("num =[%d]\n", node->num);
-	//	node = node->next;
-	//}
+	return (count_size);
 }
 
 int		get_node_count(t_stack *node)
@@ -101,6 +27,34 @@ int		get_node_count(t_stack *node)
 		node_index++;
 		node = node->next;
 	}
-	restore_node_ptr(node);
 	return (node_index);
+}
+
+int	node_count(t_stack *node)
+{
+	int	ret;
+
+	if (!node->next)
+		return (0);
+	node = node->next;
+	ret = 0;
+	while (!node->head && !node->fin)
+	{
+		ret++;
+		node = node->next;
+	}
+	return (ret);
+}
+
+int	b_quick_sort(t_stack *a, t_stack *b)
+{
+	int	back_i;
+
+	back_i = 0;
+	while (get_node_count(b) > SORTSIZE)
+	{
+		ps_b_qsort(a, b);
+		back_i++;
+	}
+	return (0);
 }
