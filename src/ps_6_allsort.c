@@ -6,7 +6,7 @@
 /*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:14 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:21:16 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/10/28 19:39:54 by hyudai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	allsort_4case(t_stack *a, t_stack *b)
 	return (0);
 }
 
+void	fcknorm(t_stack *a, t_stack *b)
+{
+	pa(a, b);
+	ra(a, 1);
+}
+
 int	allsort(t_stack *a, t_stack *b)
 {
 	int		b2a_i;
@@ -41,6 +47,7 @@ int	allsort(t_stack *a, t_stack *b)
 	while (b2a_i > 0 && !b->next->head)
 	{
 		if (flag)
+		{
 			if (b->next->num > a->next->num)
 			{
 				ra(a, 1);
@@ -48,8 +55,8 @@ int	allsort(t_stack *a, t_stack *b)
 				flag = 0;
 				b2a_i--;
 			}
-		pa(a, b);
-		ra(a, 1);
+		}
+		fcknorm(a, b);
 		a->prev->fin = 1;
 		b2a_i--;
 	}
