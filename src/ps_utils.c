@@ -6,7 +6,7 @@
 /*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:45 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:21:46 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/10/28 19:49:02 by hyudai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ int	serch_min_num(t_stack *target)
 void	ary_check(t_stack *a, int num_size)
 {
 	int	i;
-	int	ary[num_size];
+	int	*ary;
 
+	ary = malloc(num_size * sizeof(int));
 	node_to_ary(a, num_size, ary);
 	sorted_check(ary, num_size);
 	ft_qsort(ary, 0, num_size - 1);
@@ -85,4 +86,5 @@ void	ary_check(t_stack *a, int num_size)
 			error_exit();
 		i++;
 	}
+	free(ary);
 }

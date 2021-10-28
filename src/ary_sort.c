@@ -6,7 +6,7 @@
 /*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:20:00 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:20:03 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/10/28 19:52:45 by hyudai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,14 @@ void	ft_qsort(int *ary, int left, int right)
 
 int	get_median(t_stack *a, int size)
 {
-	int	num_ary[size];
+	int	*num_ary;
 	int	median_num;
 
+	num_ary = malloc(size * sizeof(int));
 	node_to_ary(a, size, num_ary);
 	ft_qsort(num_ary, 0, size - 1);
 	median_num = num_ary[size / 2];
+	free(num_ary);
 	return (median_num);
 }
 
