@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_6case.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/28 19:22:07 by hyudai            #+#    #+#             */
+/*   Updated: 2021/10/28 19:28:15 by hyudai           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../include/push_swap.h"
 
 void	ps_b_qsort(t_stack *a, t_stack *b)
@@ -41,7 +53,7 @@ int	half_a_to_b(t_stack *a, t_stack *b, int num_size, int sort_fin)
 		return (all_to_b(a, b));
 	ra_index = 0;
 	median_num = get_median(a, node_count(a));
-	while (!a->next->fin && !a->next->boundary\
+	while (!a->next->fin && !a->next->boundary \
 	&& node_count(b) < num_size / 2)
 	{
 		if (a->next->num < median_num || sort_fin)

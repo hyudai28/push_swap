@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ary_sort.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/28 19:20:00 by hyudai            #+#    #+#             */
+/*   Updated: 2021/10/28 19:20:03 by hyudai           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../include/push_swap.h"
 
 void	node_to_ary(t_stack *a, int size, int *ary)
@@ -39,7 +51,7 @@ void	ft_qsort(int *ary, int left, int right)
 		while (pivot < ary[j])
 			j--;
 		if (i >= j)
-			break;
+			break ;
 		qsort_swap_number(ary, i, j);
 		i++;
 		j--;
@@ -76,4 +88,3 @@ void	sorted_check(int *ary, int argc)
 	}
 	exit (1);
 }
-

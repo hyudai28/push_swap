@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_list_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/28 19:22:25 by hyudai            #+#    #+#             */
+/*   Updated: 2021/10/28 19:23:51 by hyudai           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../include/push_swap.h"
 
 int	count_stack_size(t_stack *stack)
@@ -14,7 +26,7 @@ int	count_stack_size(t_stack *stack)
 	return (count_size);
 }
 
-int		get_node_count(t_stack *node)
+int	get_node_count(t_stack *node)
 {
 	int	node_index;
 

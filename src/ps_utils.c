@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/28 19:21:45 by hyudai            #+#    #+#             */
+/*   Updated: 2021/10/28 19:21:46 by hyudai           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../include/push_swap.h"
 
 void	error_exit(void)
@@ -14,10 +26,10 @@ void	arg_error(long num, char *argv)
 			error_exit();
 	}
 	if (num < -2147483648 || num > 2147483647)
-			error_exit();
+		error_exit();
 }
 
-void ps_error_check(int argc, char **argv)
+void	ps_error_check(int argc, char **argv)
 {
 	long	num_tmp;
 	int		arg_i;
@@ -61,7 +73,7 @@ int	serch_min_num(t_stack *target)
 void	ary_check(t_stack *a, int num_size)
 {
 	int	i;
-	int ary[num_size];
+	int	ary[num_size];
 
 	node_to_ary(a, num_size, ary);
 	sorted_check(ary, num_size);

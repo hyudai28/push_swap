@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_command_not_use.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/28 19:21:25 by hyudai            #+#    #+#             */
+/*   Updated: 2021/10/28 19:27:25 by hyudai           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../include/push_swap.h"
 
 int	ss(t_stack *a, t_stack *b)
 {
 	t_stack	*a_fst2sec;
-	t_stack *a_sec2fst;
+	t_stack	*a_sec2fst;
 	t_stack	*b_fst2sec;
-	t_stack *b_sec2fst;
+	t_stack	*b_sec2fst;
 
 	a_fst2sec = a;
 	a_fst2sec = a_fst2sec->next;

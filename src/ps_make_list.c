@@ -1,9 +1,20 @@
-#include "./../include/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_make_list.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/28 19:20:51 by hyudai            #+#    #+#             */
+/*   Updated: 2021/10/28 19:20:53 by hyudai           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "./../include/push_swap.h"
 
 void	stack_next(t_stack *move)
 {
-	t_stack *src;
+	t_stack	*src;
 
 	src = move;
 	move = src->next;
@@ -22,6 +33,14 @@ t_stack	*stack_setup(void)
 	return (b);
 }
 
+void	stack_setzero(t_stack *a)
+{
+	a->head = 1;
+	a->num = 0;
+	a->boundary = 0;
+	a->fin = 0;
+}
+
 t_stack	*make_list(int argc, char **argv)
 {
 	t_stack	*head;
@@ -30,12 +49,9 @@ t_stack	*make_list(int argc, char **argv)
 	int		struct_count;
 
 	head = malloc(sizeof(t_stack));
-	head->head = 1;
 	head->next = NULL;
 	head->prev = NULL;
-	head->num = 0;
-	head->boundary = 0;
-	head->fin = 0;
+	stack_setzero(head);
 	now = head;
 	struct_count = 0;
 	while (++struct_count < argc)
@@ -43,7 +59,7 @@ t_stack	*make_list(int argc, char **argv)
 		new = malloc(sizeof(t_stack));
 		new->prev = now;
 		new->next = head;
-		new->num = atoi(argv[struct_count]);
+		new->num = ft_atoi(argv[struct_count]);
 		new->head = 0;
 		new->boundary = 0;
 		new->fin = 0;
