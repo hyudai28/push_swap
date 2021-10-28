@@ -70,6 +70,8 @@ void	sorted_check(int *ary, int argc)
 	{
 		if (ary[ary_index] > ary[ary_index + 1])
 			return ;
+		if (ary[ary_index] == ary[ary_index + 1])
+			error_exit();
 		ary_index++;
 	}
 	exit (1);
