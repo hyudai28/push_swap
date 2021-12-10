@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:53 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:21:54 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/12/10 00:48:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,31 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		str2++;
 	}
 	return (*str1 - *str2);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	int		size;
+
+	c = (char)c;
+	i = 0;
+	size = ft_strlen(s) + 1;
+	while (i < size)
+	{
+		if (s[i] == c)
+			return ((char *)s + i);
+		i++;
+	}
+	return (NULL);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

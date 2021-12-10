@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:22:43 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:50:15 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/12/10 20:17:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,18 @@ int	main(int argc, char **argv)
 	t_stack	*a_stack;
 	t_stack	*b_stack;
 
+	if (argc == 2)
+		zsh_case(argv[1]);
 	ps_error_check(argc, argv);
-	b_stack = stack_setup();
 	a_stack = make_list(argc, argv);
+	b_stack = stack_setup();
 	ary_check(a_stack, argc - 1);
 	if (argc <= 3)
 		do_swap_2(a_stack, LIST_A);
 	else if (argc == 4)
 		swap_3(a_stack, LIST_A);
+	else if (argc == 5)
+		swap_4(a_stack, b_stack);
 	else if (argc <= 6)
 		do_swap_over_5(a_stack, b_stack);
 	else

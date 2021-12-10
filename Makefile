@@ -9,6 +9,7 @@ OBJDIR = obj
 SRCS := $(SOURCE_DIR)/push_swap.c
 SRCS += $(SOURCE_DIR)/ary_sort.c
 SRCS += $(SOURCE_DIR)/ft_atoi.c
+SRCS += $(SOURCE_DIR)/ft_split.c
 SRCS += $(SOURCE_DIR)/libft_utils.c
 SRCS += $(SOURCE_DIR)/ps_3case.c
 SRCS += $(SOURCE_DIR)/ps_6case.c
@@ -21,6 +22,7 @@ SRCS += $(SOURCE_DIR)/ps_list_utils.c
 SRCS += $(SOURCE_DIR)/ps_make_list.c
 SRCS += $(SOURCE_DIR)/ps_utils.c
 SRCS += $(SOURCE_DIR)/ps_debug.c
+SRCS += $(SOURCE_DIR)/zsh_case.c
 
 OBJS := ${SRCS:.c=.o}
 
@@ -40,20 +42,20 @@ fclean: clean
 		rm -rf $(NAME)
 
 re: fclean all
-#N = 100
-#ARG := $(shell python3 -c 'import random; print(*random.sample([i for i in range(-99999, 99999)], $(N)))')
+N = 100
+ARG := $(shell python3 -c 'import random; print(*random.sample([i for i in range(-99999, 99999)], $(N)))')
 
 # # There may be duplicates.
 # ARG := $(shell python3 -c 'import random; print(*([random.randrange(-2147483648, 2147483647) for i in range($(N))]))')
 
 # ARG := $(shell jot -r -s " " 100 -2147483648 2147483647)
 
-#test: all
-#		@echo $(ARG) | tee arg
-#		@echo
-#		@./push_swap $(ARG) | ./checker_Mac $(ARG)
-#		@echo
-#		@./push_swap $(ARG) | wc -l | bc
-#		@echo
+test: all
+		@echo $(ARG) | tee arg
+		@echo
+		@./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo
+		@./push_swap $(ARG) | wc -l | bc
+		@echo
 
 .PHONY: all clean fclean re

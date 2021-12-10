@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_make_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:20:51 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:20:53 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/12/10 16:38:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,35 @@ t_stack	*make_list(int argc, char **argv)
 	stack_setzero(head);
 	now = head;
 	struct_count = 0;
+	while (++struct_count < argc)
+	{
+		new = malloc(sizeof(t_stack));
+		new->prev = now;
+		new->next = head;
+		new->num = ft_atoi(argv[struct_count]);
+		new->head = 0;
+		new->boundary = 0;
+		new->fin = 0;
+		now->next = new;
+		now = now->next;
+	}
+	head->prev = now;
+	return (head);
+}
+
+t_stack	*zsh_make_list(int argc, char **argv)
+{
+	t_stack	*head;
+	t_stack	*now;
+	t_stack	*new;
+	int		struct_count;
+
+	head = malloc(sizeof(t_stack));
+	head->next = NULL;
+	head->prev = NULL;
+	stack_setzero(head);
+	now = head;
+	struct_count = -1;
 	while (++struct_count < argc)
 	{
 		new = malloc(sizeof(t_stack));

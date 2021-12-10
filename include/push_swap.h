@@ -36,6 +36,8 @@ int		do_swap_2(t_stack *node, int list_flag);
 int		swap_3(t_stack *target, int list_flag);
 void	do_swap_over_5(t_stack *a, t_stack *b);
 int		do_swap_over_6(t_stack *a, t_stack *b, int num_size);
+void	zsh_case(char *argv);
+void	swap_4(t_stack *a, t_stack *b);
 
 //ps_3case
 int		swap3_case1(t_stack *target, int list_flag);
@@ -71,6 +73,10 @@ long	ft_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
+char	**ft_split(char const *s, char c);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
+int		ft_split_count(char const *s, char c);
 
 //ps_list_utils
 int		get_node_count(t_stack *node);
@@ -81,6 +87,7 @@ int		count_stack_size(t_stack *stack);
 void	stack_next(t_stack *move);
 t_stack	*stack_setup(void);
 t_stack	*make_list(int argc, char **argv);
+t_stack	*zsh_make_list(int argc, char **argv);
 
 //ps_utils
 void	error_exit(void);
