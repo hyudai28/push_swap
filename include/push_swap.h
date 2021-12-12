@@ -106,6 +106,5 @@ int		opt_is_nextfin(t_stack *a, int not_first);
 void	opt_is_notfirst(t_stack *a, int ra_index);
 int		all_to_b(t_stack *a, t_stack *b);
 int		unsorted_num(t_stack *node);
-void	print_node(t_stack *node, int node_num);
 
 #endif

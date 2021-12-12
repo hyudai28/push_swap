@@ -21,7 +21,6 @@ SRCS += $(SOURCE_DIR)/ps_command_not_use.c
 SRCS += $(SOURCE_DIR)/ps_list_utils.c
 SRCS += $(SOURCE_DIR)/ps_make_list.c
 SRCS += $(SOURCE_DIR)/ps_utils.c
-SRCS += $(SOURCE_DIR)/ps_debug.c
 SRCS += $(SOURCE_DIR)/zsh_case.c
 
 OBJS := ${SRCS:.c=.o}

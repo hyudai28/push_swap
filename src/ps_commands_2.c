@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_commands_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:20:42 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:20:44 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/12/12 22:02:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	pa(t_stack *a, t_stack *b)
 
 	if (!b->next)
 	{
-		write(1, "error\n", 6);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	bfst2afst = b->next;
@@ -84,7 +84,7 @@ int	pb(t_stack *a, t_stack *b)
 
 	if (!a->next)
 	{
-		write(1, "error\n", 6);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	afst2bfst = a->next;

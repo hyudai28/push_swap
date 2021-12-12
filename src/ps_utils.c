@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyudai <hyudai@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:45 by hyudai            #+#    #+#             */
-/*   Updated: 2021/10/28 19:49:02 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/12/12 21:59:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_exit(void)
 {
-	printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
