@@ -52,7 +52,7 @@ ARG := $(shell python3 -c 'import random; print(*random.sample([i for i in range
 test: all
 		@echo $(ARG) | tee arg
 		@echo
-		@./push_swap $(ARG) | ./checker_linux $(ARG)
+		@./push_swap $(ARG) | ./checker_Mac $(ARG)
 		@echo
 		@./push_swap $(ARG) | wc -l | bc
 		@echo
