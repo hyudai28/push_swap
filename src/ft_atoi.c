@@ -72,13 +72,13 @@ long	ft_atoi(const char *str)
 	if (*str == '+' || *str == '-')
 		str++;
 	if (ft_atoi_error(str, flag) == 1)
-		return (-1);
+		error_exit();
 	else if (ft_atoi_error(str, flag) == -1)
-		return (0);
+		error_exit();
 	dest = ft_atoi_excute(str, dest);
 	if (ft_atoi_overflow(dest, flag) == -1)
-		return (-1);
+		error_exit();
 	else if (ft_atoi_overflow(dest, flag) == 1)
-		return (0);
+		error_exit();
 	return ((dest * flag));
 }
