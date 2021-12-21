@@ -39,6 +39,8 @@ void	stack_setzero(t_stack *a)
 	a->num = 0;
 	a->boundary = 0;
 	a->fin = 0;
+	a->next = NULL;
+	a->prev = NULL;
 }
 
 t_stack	*make_list(int argc, char **argv)
@@ -49,8 +51,6 @@ t_stack	*make_list(int argc, char **argv)
 	int		struct_count;
 
 	head = malloc(sizeof(t_stack));
-	head->next = NULL;
-	head->prev = NULL;
 	stack_setzero(head);
 	now = head;
 	struct_count = 0;

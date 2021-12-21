@@ -1,7 +1,7 @@
 NAME := push_swap
 
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror #-g -fsanitize=address
 SOURCE_DIR = src
 MINILIB_DIR = mini_libft
 OBJDIR = obj
