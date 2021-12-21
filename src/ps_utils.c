@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:45 by hyudai            #+#    #+#             */
-/*   Updated: 2021/12/12 21:59:34 by marvin           ###   ########.fr       */
+/*   Updated: 2021/12/21 19:04:13 by hyudai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ void	arg_error(long num, char *argv)
 {
 	if (num == 0)
 	{
-		if (argv[0] != '0')
+		if ((argv[0] == '-' || argv[0] == '+') && argv[1] == '0' \
+			&& argv[2] == '\0')
+		{
+			return ;
+		}
+		else if (argv[0] != '0' && argv[1] != '\0')
 			error_exit();
 	}
 	if (num < -2147483648 || num > 2147483647)

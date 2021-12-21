@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:22:43 by hyudai            #+#    #+#             */
-/*   Updated: 2021/12/13 16:30:19 by hyudai           ###   ########.fr       */
+/*   Updated: 2021/12/21 19:11:53 by hyudai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	do_swap_over_5(t_stack *a, t_stack *b)
 	ra(a, 1);
 	pa(a, b);
 	ra(a, 1);
+	exit (0);
 }
 
 int	do_swap_over_6(t_stack *a, t_stack *b, int num_size)
@@ -96,6 +97,7 @@ int	do_swap_over_6(t_stack *a, t_stack *b, int num_size)
 		sort_fin = allsort(a, b);
 	}
 	return (0);
+	exit(0);
 }
 
 int	main(int argc, char **argv)
@@ -119,4 +121,5 @@ int	main(int argc, char **argv)
 		do_swap_over_5(a_stack, b_stack);
 	else
 		do_swap_over_6(a_stack, b_stack, argc - 1);
+	system("leaks push_swap");
 }
